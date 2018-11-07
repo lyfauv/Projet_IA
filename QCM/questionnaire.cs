@@ -25,23 +25,15 @@ namespace QCM
         public questionnaire()
         {
             InitializeComponent();
-
-            // Initialisation des variables
-            lecteur = new lecteurXML();
-            fichier = "questions_reponses.xml";
-
-            // Affichage première question
-            numQuestion = 1;
-            NumQuestion.Text = "Question " + numQuestion + " sur 20";
-
-            // On tire au hasard le numéro de la question que l'on va afficher
-            numQuestionDonne = r.Next(1, 2);
-            Question.Text = lecteur.retournerQuestion(numQuestionDonne, fichier);
-
-            // Affichage des réponses de la première question
-            AfficheReponses(numQuestionDonne);
-
-
+            string texte = "Bienvenue sur IAQuest ! \nVous allez devoir répondre à une série de 20 questions. \n";
+            texte += "Pour chaque question, une seule réponse est correcte. \nVous devez cocher la bonne réponse parmi les 4 réponses données. \n";
+            texte += "La note associée à chaque question est donnée à côté de celle-ci. \nChaque bonne réponse vous donne la totalité de la note associée à la question. \n";
+            texte += "Votre note finale est une note sur 20. \n";
+            texte += "Pour valider votre réponse, cliquez sur le bouton 'Valider'. \nAttention ! Une fois validée, vous ne pouvez plus modifier votre réponse. \n";
+            texte += "Après avoir validé votre réponse, la réponse à la question et son explication vous sera donnée ainsi que les points que vous avez obtenus. \n";
+            texte += "Pour commencer le test, appuyer sur le bouton 'Commencer le test'. \n";
+            texte += "Bon courage ! :-)";
+            Explications.Text = texte; 
         }
 
         /// <summary>
@@ -118,6 +110,37 @@ namespace QCM
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// On commence le test après avoir cliquer sur le bouton commencer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Suivant_Click(object sender, EventArgs e)
+        {
+            // On affiche les intitulés des questions et les réponses associées
+            Explications.Visible = false;
+            Suivant.Visible = false;
+            Valider.Visible = true;
+            NumQuestion.Visible = true;
+            Question.Visible = true;
+            Reponses.Visible = true;
+
+            // Initialisation des variables
+            lecteur = new lecteurXML();
+            fichier = "questions_reponses.xml";
+
+            // Affichage première question
+            numQuestion = 1;
+            NumQuestion.Text = "Question " + numQuestion + " sur 20";
+
+            // On tire au hasard le numéro de la question que l'on va afficher
+            numQuestionDonne = r.Next(1, 2);
+            Question.Text = lecteur.retournerQuestion(numQuestionDonne, fichier);
+
+            // Affichage des réponses de la première question
+            AfficheReponses(numQuestionDonne);
         }
     }
 }
