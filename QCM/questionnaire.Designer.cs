@@ -32,6 +32,7 @@
             this.Question = new System.Windows.Forms.Label();
             this.Valider = new System.Windows.Forms.Button();
             this.Reponses = new System.Windows.Forms.CheckedListBox();
+            this.Fin = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // NumQuestion
@@ -76,17 +77,31 @@
             "Rep2",
             "Rep3",
             "Rep4"});
-            this.Reponses.Location = new System.Drawing.Point(45, 158);
+            this.Reponses.Location = new System.Drawing.Point(46, 158);
             this.Reponses.Margin = new System.Windows.Forms.Padding(5);
             this.Reponses.Name = "Reponses";
             this.Reponses.Size = new System.Drawing.Size(586, 195);
             this.Reponses.TabIndex = 2;
+            // 
+            // Fin
+            // 
+            this.Fin.AutoSize = true;
+            this.Fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Fin.Location = new System.Drawing.Point(325, 93);
+            this.Fin.Name = "Fin";
+            this.Fin.Size = new System.Drawing.Size(48, 20);
+            this.Fin.TabIndex = 4;
+            this.Fin.Text = "Label";
+            this.Fin.UseMnemonic = false;
+            this.Fin.Visible = false;
+            this.Fin.Click += new System.EventHandler(this.label1_Click);
             // 
             // questionnaire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(701, 553);
+            this.Controls.Add(this.Fin);
             this.Controls.Add(this.Valider);
             this.Controls.Add(this.Reponses);
             this.Controls.Add(this.Question);
@@ -104,5 +119,6 @@
         private System.Windows.Forms.Label Question;
         private System.Windows.Forms.Button Valider;
         private System.Windows.Forms.CheckedListBox Reponses;
+        private System.Windows.Forms.Label Fin;
     }
 }
