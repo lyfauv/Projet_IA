@@ -64,13 +64,20 @@
             this.Valider.TabIndex = 3;
             this.Valider.Text = "Valider";
             this.Valider.UseVisualStyleBackColor = true;
+            this.Valider.Click += new System.EventHandler(this.Valider_Click);
             // 
             // Reponses
             // 
             this.Reponses.BackColor = System.Drawing.SystemColors.Menu;
             this.Reponses.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Reponses.FormattingEnabled = true;
+            this.Reponses.Items.AddRange(new object[] {
+            "Rep1",
+            "Rep2",
+            "Rep3",
+            "Rep4"});
             this.Reponses.Location = new System.Drawing.Point(45, 158);
+            this.Reponses.Margin = new System.Windows.Forms.Padding(5);
             this.Reponses.Name = "Reponses";
             this.Reponses.Size = new System.Drawing.Size(586, 195);
             this.Reponses.TabIndex = 2;
