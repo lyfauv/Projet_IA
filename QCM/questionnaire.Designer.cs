@@ -31,10 +31,13 @@
             this.NumQuestion = new System.Windows.Forms.Label();
             this.Question = new System.Windows.Forms.Label();
             this.Valider = new System.Windows.Forms.Button();
-            this.Reponses = new System.Windows.Forms.CheckedListBox();
             this.Fin = new System.Windows.Forms.Label();
             this.Suivant = new System.Windows.Forms.Button();
             this.Explications = new System.Windows.Forms.Label();
+            this.Rep1 = new System.Windows.Forms.RadioButton();
+            this.Rep2 = new System.Windows.Forms.RadioButton();
+            this.Rep3 = new System.Windows.Forms.RadioButton();
+            this.Rep4 = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // NumQuestion
@@ -51,11 +54,10 @@
             // 
             // Question
             // 
-            this.Question.AutoSize = true;
             this.Question.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Question.Location = new System.Drawing.Point(42, 93);
             this.Question.Name = "Question";
-            this.Question.Size = new System.Drawing.Size(92, 20);
+            this.Question.Size = new System.Drawing.Size(602, 46);
             this.Question.TabIndex = 1;
             this.Question.Text = "La question";
             this.Question.Visible = false;
@@ -72,35 +74,15 @@
             this.Valider.Visible = false;
             this.Valider.Click += new System.EventHandler(this.Valider_Click);
             // 
-            // Reponses
-            // 
-            this.Reponses.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Reponses.BackColor = System.Drawing.SystemColors.Menu;
-            this.Reponses.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Reponses.FormattingEnabled = true;
-            this.Reponses.Items.AddRange(new object[] {
-            "Rep1",
-            "Rep2",
-            "Rep3",
-            "Rep4"});
-            this.Reponses.Location = new System.Drawing.Point(46, 158);
-            this.Reponses.Margin = new System.Windows.Forms.Padding(5);
-            this.Reponses.Name = "Reponses";
-            this.Reponses.Size = new System.Drawing.Size(586, 195);
-            this.Reponses.TabIndex = 2;
-            this.Reponses.Visible = false;
-            // 
             // Fin
             // 
-            this.Fin.AutoSize = true;
             this.Fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Fin.Location = new System.Drawing.Point(325, 93);
+            this.Fin.Location = new System.Drawing.Point(204, 83);
             this.Fin.Name = "Fin";
-            this.Fin.Size = new System.Drawing.Size(48, 20);
+            this.Fin.Size = new System.Drawing.Size(320, 46);
             this.Fin.TabIndex = 4;
             this.Fin.Text = "Label";
+            this.Fin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Fin.UseMnemonic = false;
             this.Fin.Visible = false;
             this.Fin.Click += new System.EventHandler(this.label1_Click);
@@ -127,16 +109,67 @@
             this.Explications.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Explications.UseMnemonic = false;
             // 
+            // Rep1
+            // 
+            this.Rep1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Rep1.Location = new System.Drawing.Point(46, 158);
+            this.Rep1.Name = "Rep1";
+            this.Rep1.Size = new System.Drawing.Size(599, 56);
+            this.Rep1.TabIndex = 7;
+            this.Rep1.TabStop = true;
+            this.Rep1.Text = "Rep1";
+            this.Rep1.UseVisualStyleBackColor = true;
+            this.Rep1.Visible = false;
+            // 
+            // Rep2
+            // 
+            this.Rep2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Rep2.Location = new System.Drawing.Point(46, 220);
+            this.Rep2.Name = "Rep2";
+            this.Rep2.Size = new System.Drawing.Size(599, 56);
+            this.Rep2.TabIndex = 8;
+            this.Rep2.TabStop = true;
+            this.Rep2.Text = "Rep2";
+            this.Rep2.UseVisualStyleBackColor = true;
+            this.Rep2.Visible = false;
+            // 
+            // Rep3
+            // 
+            this.Rep3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Rep3.Location = new System.Drawing.Point(45, 282);
+            this.Rep3.Name = "Rep3";
+            this.Rep3.Size = new System.Drawing.Size(599, 56);
+            this.Rep3.TabIndex = 9;
+            this.Rep3.TabStop = true;
+            this.Rep3.Text = "Rep3";
+            this.Rep3.UseVisualStyleBackColor = true;
+            this.Rep3.Visible = false;
+            // 
+            // Rep4
+            // 
+            this.Rep4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Rep4.Location = new System.Drawing.Point(45, 344);
+            this.Rep4.Name = "Rep4";
+            this.Rep4.Size = new System.Drawing.Size(599, 56);
+            this.Rep4.TabIndex = 10;
+            this.Rep4.TabStop = true;
+            this.Rep4.Text = "Rep4";
+            this.Rep4.UseVisualStyleBackColor = true;
+            this.Rep4.Visible = false;
+            // 
             // questionnaire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(701, 553);
+            this.Controls.Add(this.Rep4);
+            this.Controls.Add(this.Rep3);
+            this.Controls.Add(this.Rep2);
+            this.Controls.Add(this.Rep1);
             this.Controls.Add(this.Explications);
             this.Controls.Add(this.Suivant);
             this.Controls.Add(this.Fin);
             this.Controls.Add(this.Valider);
-            this.Controls.Add(this.Reponses);
             this.Controls.Add(this.Question);
             this.Controls.Add(this.NumQuestion);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -153,9 +186,12 @@
         private System.Windows.Forms.Label NumQuestion;
         private System.Windows.Forms.Label Question;
         private System.Windows.Forms.Button Valider;
-        private System.Windows.Forms.CheckedListBox Reponses;
         private System.Windows.Forms.Label Fin;
         private System.Windows.Forms.Button Suivant;
         private System.Windows.Forms.Label Explications;
+        private System.Windows.Forms.RadioButton Rep1;
+        private System.Windows.Forms.RadioButton Rep2;
+        private System.Windows.Forms.RadioButton Rep3;
+        private System.Windows.Forms.RadioButton Rep4;
     }
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <questionnaire>
-  <question indice="1" nom="Comment s'appelle le prof ?" rep1 ="Jean-Marc Salotti" rep2 ="Ji-Marc Salottean" rep3 ="Jean-Sarc Malotti" rep4 ="Jean-larc Samotti" bonneR ="1" explication="C'est son nom aussi"/>
+  <question indice="1" nom="Parmi ces quatre définitions, laquelle semble le plus correspondre à celle de l’intelligence artificielle ?" rep1 ="Ensemble des théories et des techniques mises en œuvre en vue de réaliser des programmes capables de simuler l'intelligence" rep2 ="Ensemble des techniques et algorithmes permettant de résoudre des problèmes à l’aide d’un ordinateur" rep3 ="Programme capable de produire un comportement intelligent sans éprouver d’impression d'une réelle conscience de soi" rep4 ="Construction de programmes informatiques qui s’adonnent à des tâches qui sont, pour l’instant, accomplies de façon moins satisfaisante par des êtres humains" bonneR ="2" explication="Cependant, la définition de l'IA ne trouve pas de consensus, même si celle donnée ci-dessus reste la plus unanime."/>
   <question indice="2" nom="tu préfères ?" rep1 ="le pain" rep2 ="les vaches" rep3 ="les dinosaures" rep4 ="A380" bonneR ="4" explication =""/>
 </questionnaire>

@@ -45,10 +45,11 @@ namespace QCM
         /// <param name="numQuestion"></param>
         public void AfficheReponses(int numQuestion)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                Reponses.Items[i] = lecteur.retournerReponse(numQuestion, i + 1 , fichier);
-            }
+            // On modifie le texte de chaque bouton radio avec le contenu du fichier XML
+            Rep1.Text = lecteur.retournerReponse(numQuestion, 1, fichier);
+            Rep2.Text = lecteur.retournerReponse(numQuestion, 2, fichier);
+            Rep3.Text = lecteur.retournerReponse(numQuestion, 3, fichier);
+            Rep4.Text = lecteur.retournerReponse(numQuestion, 4, fichier);
         }
 
 
@@ -58,36 +59,107 @@ namespace QCM
         }
 
         /// <summary>
+        /// On commence le test après avoir cliqué sur le bouton commencer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Suivant_Click(object sender, EventArgs e)
+        {
+            // On affiche les intitulés des questions et les réponses associées
+            Explications.Visible = false;
+            Suivant.Visible = false;
+            Valider.Visible = true;
+            NumQuestion.Visible = true;
+            Question.Visible = true;
+            Rep1.Visible = true;
+            Rep2.Visible = true;
+            Rep3.Visible = true;
+            Rep4.Visible = true;
+
+            // Initialisation des variables
+            lecteur = new lecteurXML();
+            fichier = "../../questions_reponses.xml";
+
+            // Affichage première question
+            numQuestion = 1;
+            NumQuestion.Text = "Question " + numQuestion + " sur 20";
+
+            // On tire au hasard le numéro de la question que l'on va afficher
+            numQuestionDonne = r.Next(1, 2);
+            Question.Text = lecteur.retournerQuestion(numQuestionDonne, fichier);
+
+            // Affichage des réponses de la première question
+            AfficheReponses(numQuestionDonne);
+        }
+
+        public void AfficheSolution()
+        {
+            string msgReponse;
+            string explication;
+            string repExplication;
+
+            // On récupère l'explication de la bonne réponse
+            explication = lecteur.retournerExplication(numQuestionDonne, fichier);
+
+            // On récupère l'indice de la bonne réponse
+            int reponseJuste = lecteur.retournerReponseJusteInt(numQuestionDonne, fichier);
+
+
+            // On affiche si oui ou non l'élève a coché la bonne réponse
+            if (reponseJuste == reponse)
+                msgReponse = "Vous avez donné la bonne réponse !";
+            else
+                msgReponse = "Vous avez donné la mauvaise réponse :s";
+
+            repExplication = msgReponse + "\nLa bonne réponse était : " + lecteur.retournerReponseJusteString(numQuestionDonne, fichier) + "\n" + explication;
+
+            var result = MessageBox.Show(repExplication, "Solution", MessageBoxButtons.OK);
+        }
+
+        /// <summary>
         /// Validation de la réponse et passage à la réponse suivante
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Valider_Click(object sender, EventArgs e)
         {
+
             numQuestion++;
 
             if (numQuestion <= 20)
             {
                 // On regarde si la réponse cochée est la bonne
-                if (Reponses.CheckedItems.Count <= 1)
+                if (Rep1.Checked || Rep2.Checked || Rep3.Checked || Rep4.Checked)
                 {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        if (Reponses.GetItemChecked(i))
-                        {
-                            reponse = i;
-                            // Si le numéro de la réponse cochée est la bonne, on augmente la note de 1
-                            if (lecteur.retournerReponseJusteInt(numQuestionDonne, fichier) == i + 1)
-                                score += 1;
-                        }
-                    }
+                    // On regarde quelle réponse à été cochée
+
+                    if (Rep1.Checked)
+                        reponse = 1;
+                    if (Rep2.Checked)
+                        reponse = 2;
+                    if (Rep3.Checked)
+                        reponse = 3;
+                    if (Rep4.Checked)
+                        reponse = 4;
+
+                    // On augmente la note si la réponse cochée est la bonne
+                    if (lecteur.retournerReponseJusteInt(numQuestionDonne, fichier) == reponse)
+                        score += 1;
+
                 }
 
-                // On modifie le score en conséquence
+                AfficheSolution();
+
+                // On décoche les boutons radios
+                Rep1.Checked = false;
+                Rep2.Checked = false;
+                Rep3.Checked = false;
+                Rep4.Checked = false;
 
                 // On passe à la question suivante
-                numQuestionDonne = r.Next(1, 2);
+                numQuestionDonne = r.Next(1, 3);
                 Question.Text = lecteur.retournerQuestion(numQuestionDonne, fichier);
+                NumQuestion.Text = "Question " + Convert.ToString(numQuestion) + " sur 20";
 
                 // Affichage des réponses de la question suivante
                 AfficheReponses(numQuestionDonne);
@@ -99,7 +171,10 @@ namespace QCM
                 Valider.Visible = false;
                 NumQuestion.Visible = false;
                 Question.Visible = false;
-                Reponses.Visible = false;
+                Rep1.Visible = false;
+                Rep2.Visible = false;
+                Rep3.Visible = false;
+                Rep4.Visible = false;
 
                 string reussite;
 
@@ -116,39 +191,5 @@ namespace QCM
 
         }
 
-        /// <summary>
-        /// On commence le test après avoir cliquer sur le bouton commencer
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Suivant_Click(object sender, EventArgs e)
-        {
-            // On affiche la fenêtre donnant la réponse correcte avec une explication associée
-            Form formulaire = new Reponse(numQuestionDonne, fichier, reponse);
-            formulaire.ShowDialog();
-
-            // On affiche les intitulés des questions et les réponses associées
-            Explications.Visible = false;
-            Suivant.Visible = false;
-            Valider.Visible = true;
-            NumQuestion.Visible = true;
-            Question.Visible = true;
-            Reponses.Visible = true;
-
-            // Initialisation des variables
-            lecteur = new lecteurXML();
-            fichier = "questions_reponses.xml";
-
-            // Affichage première question
-            numQuestion = 1;
-            NumQuestion.Text = "Question " + numQuestion + " sur 20";
-
-            // On tire au hasard le numéro de la question que l'on va afficher
-            numQuestionDonne = r.Next(1, 2);
-            Question.Text = lecteur.retournerQuestion(numQuestionDonne, fichier);
-
-            // Affichage des réponses de la première question
-            AfficheReponses(numQuestionDonne);
-        }
     }
 }
