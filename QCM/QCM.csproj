@@ -53,11 +53,11 @@
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Partie II\Form1.cs">
+    <Compile Include="Partie II\Dijkstra.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Partie II\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Partie II\Dijkstra.Designer.cs">
+      <DependentUpon>Dijkstra.cs</DependentUpon>
     </Compile>
     <Compile Include="Partie II\GenericNode.cs" />
     <Compile Include="Partie II\Node2.cs" />
@@ -79,8 +79,8 @@
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Partie II\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Partie II\Dijkstra.resx">
+      <DependentUpon>Dijkstra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -115,7 +115,6 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
