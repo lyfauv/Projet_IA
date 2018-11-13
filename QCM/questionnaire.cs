@@ -18,6 +18,7 @@ namespace QCM
         Random r = new Random();
         string fichier;
         int numQuestionDonne;
+        int reponse;
 
         /// <summary>
         /// Initialisation du questionnaire
@@ -25,6 +26,8 @@ namespace QCM
         public questionnaire()
         {
             InitializeComponent();
+
+            // Petit texte d'introduction au QCM
             string texte = "Bienvenue sur IAQuest ! \nVous allez devoir répondre à une série de 20 questions. \n";
             texte += "Pour chaque question, une seule réponse est correcte. \nVous devez cocher la bonne réponse parmi les 4 réponses données. \n";
             texte += "La note associée à chaque question est donnée à côté de celle-ci. \nChaque bonne réponse vous donne la totalité de la note associée à la question. \n";
@@ -72,6 +75,7 @@ namespace QCM
                     {
                         if (Reponses.GetItemChecked(i))
                         {
+                            reponse = i;
                             // Si le numéro de la réponse cochée est la bonne, on augmente la note de 1
                             if (lecteur.retournerReponseJusteInt(numQuestionDonne, fichier) == i + 1)
                                 score += 1;
@@ -119,6 +123,10 @@ namespace QCM
         /// <param name="e"></param>
         private void Suivant_Click(object sender, EventArgs e)
         {
+            // On affiche la fenêtre donnant la réponse correcte avec une explication associée
+            Form formulaire = new Reponse(numQuestionDonne, fichier, reponse);
+            formulaire.ShowDialog();
+
             // On affiche les intitulés des questions et les réponses associées
             Explications.Visible = false;
             Suivant.Visible = false;

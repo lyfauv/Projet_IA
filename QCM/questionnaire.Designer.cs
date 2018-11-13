@@ -74,6 +74,9 @@
             // 
             // Reponses
             // 
+            this.Reponses.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Reponses.BackColor = System.Drawing.SystemColors.Menu;
             this.Reponses.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Reponses.FormattingEnabled = true;
@@ -115,11 +118,10 @@
             // 
             // Explications
             // 
-            this.Explications.AutoSize = true;
             this.Explications.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Explications.Location = new System.Drawing.Point(43, 158);
+            this.Explications.Location = new System.Drawing.Point(55, 139);
             this.Explications.Name = "Explications";
-            this.Explications.Size = new System.Drawing.Size(43, 17);
+            this.Explications.Size = new System.Drawing.Size(589, 248);
             this.Explications.TabIndex = 6;
             this.Explications.Text = "Label";
             this.Explications.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -137,6 +139,8 @@
             this.Controls.Add(this.Reponses);
             this.Controls.Add(this.Question);
             this.Controls.Add(this.NumQuestion);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "questionnaire";
             this.Text = "questionnaire";
             this.ResumeLayout(false);

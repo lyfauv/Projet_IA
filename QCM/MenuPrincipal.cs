@@ -20,7 +20,7 @@ namespace QCM
         private void QCM_Click(object sender, EventArgs e)
         {
             Form formulaire = new questionnaire();
-            formulaire.Show();
+            formulaire.ShowDialog();
         }
     }
 }
