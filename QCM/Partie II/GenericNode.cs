@@ -6,7 +6,9 @@ using System.Text;
 
 namespace QCM
 {
-    class GenericNode
+    // classe abstraite, il est donc impératif de créer une classe qui en hérite
+    // pour résoudre un problème particulier en y ajoutant des infos liées au contexte du problème
+    abstract public class GenericNode
     {
         // protected string Name;              // DOIT ETRE UNIQUE POUR CHAQUE genericnode !!
         protected double GCost;               //coût du chemin du noeud initial jusqu'à ce noeud
