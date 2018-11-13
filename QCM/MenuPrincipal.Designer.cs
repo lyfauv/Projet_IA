@@ -63,6 +63,7 @@
             this.Dijkstra.TabIndex = 2;
             this.Dijkstra.Text = "Tester mes connaissances sur l\'algorithme de Dijkstra";
             this.Dijkstra.UseVisualStyleBackColor = true;
+            this.Dijkstra.Click += new System.EventHandler(this.Dijkstra_Click);
             // 
             // MenuPrincipal
             // 
