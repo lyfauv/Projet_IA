@@ -61,12 +61,6 @@
     <Compile Include="questionnaire.Designer.cs">
       <DependentUpon>questionnaire.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reponse.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reponse.Designer.cs">
-      <DependentUpon>Reponse.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,9 +75,6 @@
     </Compile>
     <EmbeddedResource Include="questionnaire.resx">
       <DependentUpon>questionnaire.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reponse.resx">
-      <DependentUpon>Reponse.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
