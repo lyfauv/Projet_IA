@@ -1,6 +1,6 @@
 ﻿namespace QCM.Partie_II
 {
-    partial class Form1
+    partial class Dijkstra
     {
         /// <summary>
         /// Required designer variable.

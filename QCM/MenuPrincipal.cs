@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QCM.Partie_II;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,12 @@ namespace QCM
         {
             Form formulaire = new questionnaire();
             formulaire.ShowDialog();
+        }
+
+        private void Dijkstra_Click(object sender, EventArgs e)
+        {
+            Form dijkstra = new Dijkstra();
+            dijkstra.ShowDialog();
         }
     }
 }

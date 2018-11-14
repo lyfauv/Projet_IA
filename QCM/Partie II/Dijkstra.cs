@@ -11,13 +11,13 @@ using System.IO;
 
 namespace QCM.Partie_II
 {
-    public partial class Form1 : Form
+    public partial class Dijkstra : Form
     {
         static public double[,] matrice;
         static public int nbnodes = 10;
         static public int numinitial;
         static public int numfinal;
-        public Form1()
+        public Dijkstra()
         {
             InitializeComponent();
         }
