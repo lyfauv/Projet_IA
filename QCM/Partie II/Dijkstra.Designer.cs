@@ -51,7 +51,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(43, 65);
+            this.button3.Location = new System.Drawing.Point(520, 122);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 18;
@@ -60,9 +60,9 @@
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(487, 75);
+            this.treeView1.Location = new System.Drawing.Point(12, 12);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(152, 180);
+            this.treeView1.Size = new System.Drawing.Size(152, 34);
             this.treeView1.TabIndex = 17;
             // 
             // listBox1
@@ -115,17 +115,18 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 11;
             this.textBox1.Text = "0";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(43, 20);
+            this.button1.Location = new System.Drawing.Point(520, 65);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 10;
             this.button1.Text = "Init1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // Dijkstra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -140,7 +141,7 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
+            this.Name = "Dijkstra";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -137,6 +137,10 @@ namespace QCM.Partie_II
 
 
         }
-        
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
