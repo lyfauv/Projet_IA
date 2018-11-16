@@ -131,5 +131,43 @@ namespace QCM
             }
             return "oupsy doopsy";
         }
+
+        public bool ImageExiste(int numQ, string fichier)
+        {
+            string x = numQ.ToString();
+            XmlTextReader reader = new XmlTextReader(fichier);
+            while (reader.Read())
+            {
+                XmlNodeType nType = reader.NodeType;
+                if (reader.Name.Equals("question") && reader.GetAttribute("indice").Equals(x))
+                {
+                    try 
+                    {
+                        reader.GetAttribute("img");
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public string retournerImage(int numQ, string fichier)
+        {
+            string x = numQ.ToString();
+            XmlTextReader reader = new XmlTextReader(fichier);
+            while (reader.Read())
+            {
+                XmlNodeType nType = reader.NodeType;
+                if (reader.Name.Equals("question") && reader.GetAttribute("indice").Equals(x))
+                {
+                    return reader.GetAttribute("img");
+                }
+            }
+            return "oupsy doopsy";
+        }
     }
 }

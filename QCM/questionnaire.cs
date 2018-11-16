@@ -92,6 +92,9 @@ namespace QCM
             AfficheReponses(numQuestionDonne);
         }
 
+        /// <summary>
+        /// Affiche la bonne réponse avec une explication après que l'on ai cliqué sur suivants
+        /// </summary>
         public void AfficheSolution()
         {
             string msgReponse;
@@ -157,9 +160,14 @@ namespace QCM
                 Rep4.Checked = false;
 
                 // On passe à la question suivante
-                numQuestionDonne = r.Next(1, 3);
+                numQuestionDonne = r.Next(3, 5);
                 Question.Text = lecteur.retournerQuestion(numQuestionDonne, fichier);
                 NumQuestion.Text = "Question " + Convert.ToString(numQuestion) + " sur 20";
+                if (lecteur.ImageExiste(numQuestionDonne, fichier))
+                {
+                    Image.Visible = true;
+                    Image.ImageLocation = lecteur.retournerImage(numQuestionDonne, fichier);
+                }
 
                 // Affichage des réponses de la question suivante
                 AfficheReponses(numQuestionDonne);
@@ -175,6 +183,7 @@ namespace QCM
                 Rep2.Visible = false;
                 Rep3.Visible = false;
                 Rep4.Visible = false;
+                Image.Visible = false;
 
                 string reussite;
 
@@ -191,5 +200,9 @@ namespace QCM
 
         }
 
+        private void questionnaire_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
