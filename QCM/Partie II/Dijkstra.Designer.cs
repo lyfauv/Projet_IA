@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.listBoxgraphe = new System.Windows.Forms.ListBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.button_txt = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,37 +37,37 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // listBoxgraphe
             // 
             this.listBoxgraphe.FormattingEnabled = true;
-            this.listBoxgraphe.Location = new System.Drawing.Point(179, 91);
+            this.listBoxgraphe.Location = new System.Drawing.Point(571, 133);
             this.listBoxgraphe.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxgraphe.Name = "listBoxgraphe";
             this.listBoxgraphe.Size = new System.Drawing.Size(100, 121);
             this.listBoxgraphe.TabIndex = 19;
             // 
-            // button3
+            // button_txt
             // 
-            this.button3.Location = new System.Drawing.Point(520, 122);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "Init2";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // treeView1
-            // 
-            this.treeView1.Location = new System.Drawing.Point(12, 12);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(152, 34);
-            this.treeView1.TabIndex = 17;
+            this.button_txt.Location = new System.Drawing.Point(12, 21);
+            this.button_txt.Name = "button_txt";
+            this.button_txt.Size = new System.Drawing.Size(68, 23);
+            this.button_txt.TabIndex = 18;
+            this.button_txt.Text = "Init";
+            this.button_txt.UseVisualStyleBackColor = true;
+            this.button_txt.Click += new System.EventHandler(this.button_txt_Click_1);
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(344, 99);
+            this.listBox1.Location = new System.Drawing.Point(461, 7);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(128, 121);
             this.listBox1.TabIndex = 16;
@@ -76,7 +75,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(316, 7);
+            this.label2.Location = new System.Drawing.Point(183, 7);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 15;
@@ -85,7 +84,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(176, 7);
+            this.label1.Location = new System.Drawing.Point(94, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 14;
@@ -93,7 +92,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(487, 20);
+            this.button2.Location = new System.Drawing.Point(595, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 13;
@@ -102,38 +101,83 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(319, 36);
+            this.textBox2.Location = new System.Drawing.Point(186, 23);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(58, 20);
             this.textBox2.TabIndex = 12;
             this.textBox2.Text = "6";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(179, 36);
+            this.textBox1.Location = new System.Drawing.Point(97, 23);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(62, 20);
             this.textBox1.TabIndex = 11;
             this.textBox1.Text = "0";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(520, 65);
+            this.button1.Location = new System.Drawing.Point(595, 41);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 10;
             this.button1.Text = "Init1";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(12, 57);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(234, 191);
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(291, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Noeud ouvert";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(294, 62);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 22;
+            this.textBox3.Text = "6";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(291, 85);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 13);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "Noeud fermé";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(294, 102);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 24;
+            this.textBox4.Text = "6";
+            // 
             // Dijkstra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(682, 262);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.listBoxgraphe);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.button_txt);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -143,6 +187,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Dijkstra";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,8 +196,7 @@
         #endregion
 
         private System.Windows.Forms.ListBox listBoxgraphe;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Button button_txt;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -160,5 +204,10 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
