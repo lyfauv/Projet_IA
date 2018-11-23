@@ -28,7 +28,7 @@ namespace QCM
                     return reader.GetAttribute("nom");
                 }
             }
-            return "oupsy doopsy";
+            return "Pas de résultats";
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace QCM
                     }
                 }
             }
-            return "oupsy doopsy";
+            return "Pas de résultats";
         }
 
         /// <summary>
@@ -99,19 +99,6 @@ namespace QCM
         }
 
         /// <summary>
-        /// lis le fichier xml "fichier" et compare la reponse entrée et la réponse juste de la question d'indice numQ
-        /// </summary>
-        /// <param name="rep"></param>
-        /// <param name="numQ"></param>
-        /// <param name="fichier"></param>
-        /// <returns></returns>
-        public bool verificationReponse(int rep, int numQ, string fichier)
-        {
-            if (rep == retournerReponseJusteInt(numQ, fichier)) { return true; }
-            else { return false; }
-        }
-
-        /// <summary>
         /// lis le fichier xml "fichier" et renvoie l'explication de la bonne réponse associée à la question de l'indice demandé
         /// </summary>
         /// <param name="numQ"></param>
@@ -129,7 +116,7 @@ namespace QCM
                     return reader.GetAttribute("explication");
                 }
             }
-            return "oupsy doopsy";
+            return "Pas de résultats";
         }
 
         public bool ImageExiste(int numQ, string fichier)
@@ -167,7 +154,7 @@ namespace QCM
                     return reader.GetAttribute("img");
                 }
             }
-            return "oupsy doopsy";
+            return "Pas de résultats";
         }
     }
 }

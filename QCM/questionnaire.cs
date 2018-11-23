@@ -19,6 +19,7 @@ namespace QCM
         string fichier;
         int numQuestionDonne;
         int reponse;
+        List<int> questionPassees;
 
         /// <summary>
         /// Initialisation du questionnaire
@@ -36,7 +37,9 @@ namespace QCM
             texte += "Après avoir validé votre réponse, la réponse à la question et son explication vous sera donnée ainsi que les points que vous avez obtenus. \n";
             texte += "Pour commencer le test, appuyer sur le bouton 'Commencer le test'. \n";
             texte += "Bon courage ! :-)";
-            Explications.Text = texte; 
+            Explications.Text = texte;
+
+            questionPassees = new List<int>();
         }
 
         /// <summary>
@@ -85,8 +88,9 @@ namespace QCM
             NumQuestion.Text = "Question " + numQuestion + " sur 20";
 
             // On tire au hasard le numéro de la question que l'on va afficher
-            numQuestionDonne = r.Next(1, 2);
+            numQuestionDonne = r.Next(1, 21);
             Question.Text = lecteur.retournerQuestion(numQuestionDonne, fichier);
+            questionPassees.Add(numQuestionDonne);
 
             // Affichage des réponses de la première question
             AfficheReponses(numQuestionDonne);
@@ -160,9 +164,30 @@ namespace QCM
                 Rep4.Checked = false;
 
                 // On passe à la question suivante
-                numQuestionDonne = r.Next(3, 5);
+                numQuestionDonne = r.Next(1, 21);
                 Question.Text = lecteur.retournerQuestion(numQuestionDonne, fichier);
                 NumQuestion.Text = "Question " + Convert.ToString(numQuestion) + " sur 20";
+
+                // On regarde si la question n'a pas déjà été donnée
+                bool present = true;
+                while (present)
+                {
+                    foreach (int element in questionPassees)
+                    {
+                        if (element == numQuestionDonne)
+                        {
+                            present = true;
+                            numQuestionDonne = r.Next(1, 21);
+                        }
+
+                    }
+
+                    present = false;
+                }
+
+                // On ajoute le numéro de la question obtenue à la liste des questions déjà données
+                questionPassees.Add(numQuestionDonne);
+
                 if (lecteur.ImageExiste(numQuestionDonne, fichier))
                 {
                     Image.Visible = true;
@@ -187,7 +212,7 @@ namespace QCM
 
                 string reussite;
 
-                if (score >= 10)
+                if (score >= 20)
                     reussite = "Vous avez réussi votre examen ! :-)";
                 else
                     reussite = "Il vous manque encore quelques connaissances sur le sujet :s";
