@@ -94,6 +94,12 @@ namespace QCM
 
             // Affichage des réponses de la première question
             AfficheReponses(numQuestionDonne);
+
+            if (lecteur.ImageExiste(numQuestionDonne, fichier))
+            {
+                Image.Visible = true;
+                Image.ImageLocation = lecteur.retournerImage(numQuestionDonne, fichier);
+            }
         }
 
         /// <summary>
@@ -151,7 +157,7 @@ namespace QCM
 
                     // On augmente la note si la réponse cochée est la bonne
                     if (lecteur.retournerReponseJusteInt(numQuestionDonne, fichier) == reponse)
-                        score += 1;
+                        score += lecteur.retournerScore(numQuestionDonne, fichier);
 
                 }
 
@@ -165,13 +171,13 @@ namespace QCM
 
                 // On passe à la question suivante
                 numQuestionDonne = r.Next(1, 21);
-                Question.Text = lecteur.retournerQuestion(numQuestionDonne, fichier);
                 NumQuestion.Text = "Question " + Convert.ToString(numQuestion) + " sur 20";
 
                 // On regarde si la question n'a pas déjà été donnée
                 bool present = true;
                 while (present)
                 {
+                    present = false;
                     foreach (int element in questionPassees)
                     {
                         if (element == numQuestionDonne)
@@ -181,12 +187,12 @@ namespace QCM
                         }
 
                     }
-
-                    present = false;
                 }
 
                 // On ajoute le numéro de la question obtenue à la liste des questions déjà données
                 questionPassees.Add(numQuestionDonne);
+
+                Question.Text = lecteur.retournerQuestion(numQuestionDonne, fichier);
 
                 if (lecteur.ImageExiste(numQuestionDonne, fichier))
                 {
@@ -210,13 +216,15 @@ namespace QCM
                 Rep4.Visible = false;
                 Image.Visible = false;
 
-                string reussite;
+                string reussite = "mince";
 
-                if (score >= 20)
+                if (((score * 20) / 26) >= 10)
                     reussite = "Vous avez réussi votre examen ! :-)";
                 else
                     reussite = "Il vous manque encore quelques connaissances sur le sujet :s";
-                Fin.Text = "Vous avez terminé ! \n Vous avez obtenu une note de " + score + " / 20 ! \n" + reussite;
+
+                // On convertit la note sur 26 sur 20 et on affiche la note obtenue
+                Fin.Text = "Vous avez terminé ! Vous avez obtenu une note de " + ((score * 20) / 26) + " / 20 ! \n" + reussite;
             }
         }
 

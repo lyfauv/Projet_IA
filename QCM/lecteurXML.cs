@@ -119,6 +119,12 @@ namespace QCM
             return "Pas de résultats";
         }
 
+        /// <summary>
+        /// Permet de déterminer si une image est associée à la question
+        /// </summary>
+        /// <param name="numQ"></param>
+        /// <param name="fichier"></param>
+        /// <returns></returns>
         public bool ImageExiste(int numQ, string fichier)
         {
             string x = numQ.ToString();
@@ -142,6 +148,12 @@ namespace QCM
             return false;
         }
 
+        /// <summary>
+        /// Retourne l'image associée à une question donnée
+        /// </summary>
+        /// <param name="numQ"></param>
+        /// <param name="fichier"></param>
+        /// <returns></returns>
         public string retournerImage(int numQ, string fichier)
         {
             string x = numQ.ToString();
@@ -155,6 +167,27 @@ namespace QCM
                 }
             }
             return "Pas de résultats";
+        }
+
+        /// <summary>
+        /// Retourne le nombre de points que rapporte la question
+        /// </summary>
+        /// <param name="numQ"></param>
+        /// <param name="fichier"></param>
+        /// <returns></returns>
+        public int retournerScore(int numQ, string fichier)
+        {
+            string x = numQ.ToString();
+            XmlTextReader reader = new XmlTextReader(fichier);
+            while (reader.Read())
+            {
+                XmlNodeType nType = reader.NodeType;
+                if (reader.Name.Equals("question") && reader.GetAttribute("indice").Equals(x))
+                {
+                    return Convert.ToInt32(reader.GetAttribute("note"));
+                }
+            }
+            return 0;
         }
     }
 }
