@@ -16,7 +16,7 @@ namespace QCM.Partie_II
         static public double[,] matrice;
         static public int nbnodes;
         static public string img;
-        static public int numinitial= 6;
+        static public int numinitial;
         static public int numfinal;
         public Dijkstra()
         {
@@ -24,7 +24,7 @@ namespace QCM.Partie_II
         }
       
 
-       /* private void button2_Click(object sender, EventArgs e)
+        /*private void button2_Click(object sender, EventArgs e)
         {
             numinitial = Convert.ToInt32(textBox1.Text);
             numfinal = Convert.ToInt32(textBox2.Text);
@@ -73,6 +73,9 @@ namespace QCM.Partie_II
             for (int k = 0; k <= nbnodes; k++)
                 for (int j = 0; j <= nbnodes; j++)
                     matrice[k, j] = -1;
+
+            // Affichage aléatoire du noeud initial à explorer
+            labelNdInit.Text = (r.Next(1, nbnodes).ToString());
 
             // 2ème ligne : image associé
             ligne = monStreamReader.ReadLine();
@@ -150,7 +153,8 @@ namespace QCM.Partie_II
             }
 
             listBox_NdO.Items.Clear();
-            listBox_NdO.Items.Add(numinitial);
+            // Affichage du premier noeud à explorer
+            listBox_NdO.Items.Add(labelNdInit.Text + "; ");
             listBox_NdF.Items.Add(" ");
 
 
@@ -159,11 +163,8 @@ namespace QCM.Partie_II
 
         private void buttonValid_Click(object sender, EventArgs e)
         {
-            for (int m = 0; m < checkedListBox_NdO.CheckedItems.Count; m++)
-            {
-                checkedListBox_NdO.SetItemCheckState(m, CheckState.Unchecked);
-            }
 
+            // On transfère les items sélectionnés à la liste
             string sNdO = "";
             for (int m=0; m < checkedListBox_NdO.CheckedItems.Count; m++)
             {
@@ -177,6 +178,12 @@ namespace QCM.Partie_II
                 sNdF = sNdF + checkedListBox_NdF.CheckedItems[m] + "; ";
             }
             listBox_NdF.Items.Add(sNdF);
+
+            // On clear les items sélectionnés dans la checkboxlist des noeuds ouverts
+            foreach (int i in checkedListBox_NdO.CheckedIndices)
+            {
+                checkedListBox_NdO.SetItemCheckState(i, CheckState.Unchecked);
+            }
 
         }
     }
