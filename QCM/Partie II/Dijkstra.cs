@@ -16,30 +16,15 @@ namespace QCM.Partie_II
         static public double[,] matrice;
         static public int nbnodes;
         static public string img;
-        static public int numinitial;
+        static public int numinitial= 6;
         static public int numfinal;
         public Dijkstra()
         {
             InitializeComponent();
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
+      
 
-            matrice = new double[nbnodes, nbnodes];
-            for (int i = 0; i < nbnodes; i++)
-                for (int j = 0; j < nbnodes; j++)
-                    matrice[i, j] = -1;
-
-            matrice[0, 1] = 3; matrice[1, 0] = 3;
-            matrice[0, 2] = 5; matrice[2, 0] = 5;
-            matrice[0, 3] = 7; matrice[3, 0] = 7;
-            matrice[1, 4] = 8; matrice[4, 1] = 8;
-            matrice[2, 4] = 3; matrice[4, 2] = 3;
-            matrice[4, 5] = 7; matrice[5, 4] = 7;
-            matrice[5, 6] = 4; matrice[6, 5] = 4;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+       /* private void button2_Click(object sender, EventArgs e)
         {
             numinitial = Convert.ToInt32(textBox1.Text);
             numfinal = Convert.ToInt32(textBox2.Text);
@@ -52,19 +37,19 @@ namespace QCM.Partie_II
             for (int i = 1; i < solution.Count; i++)
             {
                 Node2 N2 = (Node2)solution[i];
-                listBox1.Items.Add(Convert.ToString(N1.numero)
+                listBox_NdO.Items.Add(Convert.ToString(N1.numero)
                      + "--->" + Convert.ToString(N2.numero)
                      + "   : " + Convert.ToString(matrice[N1.numero, N2.numero]));
                 N1 = N2;
             }
 
-           // g.GetSearchTree(treeView1);
-        }
+            // g.GetSearchTree(treeView1);
+        }*/
 
         private void button_txt_Click_1(object sender, EventArgs e)
         {
             Random r = new Random();
-            int num = r.Next(2)+1;
+            int num = r.Next(1, 2);
             string txt = "graphe" + num + ".txt";
 
             StreamReader monStreamReader = new StreamReader(txt);
@@ -84,23 +69,23 @@ namespace QCM.Partie_II
             }
             nbnodes = Convert.ToInt32(strnbnoeuds);
 
+            matrice = new double[nbnodes + 1, nbnodes + 1];
+            for (int k = 0; k <= nbnodes; k++)
+                for (int j = 0; j <= nbnodes; j++)
+                    matrice[k, j] = -1;
+
             // 2ème ligne : image associé
             ligne = monStreamReader.ReadLine();
             i = 0;
             while (ligne[i] != ':') i++;
-            string image = "";
+            string img = "";
             i++; // On dépasse le ":"
             while (ligne[i] == ' ') i++; // on saute les blancs éventuels
             while (i < ligne.Length)
             {
-                img = image + ligne[i];
+                img = img + ligne[i];
                 i++;
             }
-
-            matrice = new double[nbnodes, nbnodes];
-            for (i = 0; i < nbnodes; i++)
-                for (int j = 0; j < nbnodes; j++)
-                    matrice[i, j] = -1;
 
             // Ensuite on a les tructure suivante : 
             //  arc : n°noeud départ    n°noeud arrivée  valeur
@@ -150,6 +135,49 @@ namespace QCM.Partie_II
             }
             // Fermeture du StreamReader (obligatoire) 
             monStreamReader.Close();
+
+            pictureBox1.Size = Image.FromFile(img).Size;
+            pictureBox1.Image = Image.FromFile(img);
+
+            for (int m=1 ; m < nbnodes+1; m++)
+            {
+                checkedListBox_NdO.Items.Add(m);
+            }
+
+            for (int m = 1; m < nbnodes + 1; m++)
+            {
+                checkedListBox_NdF.Items.Add(m);
+            }
+
+            listBox_NdO.Items.Clear();
+            listBox_NdO.Items.Add(numinitial);
+            listBox_NdF.Items.Add(" ");
+
+
+
+        }
+
+        private void buttonValid_Click(object sender, EventArgs e)
+        {
+            for (int m = 0; m < checkedListBox_NdO.CheckedItems.Count; m++)
+            {
+                checkedListBox_NdO.SetItemCheckState(m, CheckState.Unchecked);
+            }
+
+            string sNdO = "";
+            for (int m=0; m < checkedListBox_NdO.CheckedItems.Count; m++)
+            {
+                sNdO = sNdO + checkedListBox_NdO.CheckedItems[m] + "; ";
+            }
+            listBox_NdO.Items.Add(sNdO);
+
+            string sNdF = "";
+            for (int m = 0; m < checkedListBox_NdF.CheckedItems.Count; m++)
+            {
+                sNdF = sNdF + checkedListBox_NdF.CheckedItems[m] + "; ";
+            }
+            listBox_NdF.Items.Add(sNdF);
+
         }
     }
 }
