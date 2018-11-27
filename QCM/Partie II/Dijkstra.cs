@@ -22,35 +22,12 @@ namespace QCM.Partie_II
         {
             InitializeComponent();
         }
-      
-
-        /*private void button2_Click(object sender, EventArgs e)
-        {
-            numinitial = Convert.ToInt32(textBox1.Text);
-            numfinal = Convert.ToInt32(textBox2.Text);
-            SearchTree g = new SearchTree();
-            Node2 N0 = new Node2();
-            N0.numero = numinitial;
-            List<GenericNode> solution = g.RechercheSolutionAEtoile(N0);
-
-            Node2 N1 = N0;
-            for (int i = 1; i < solution.Count; i++)
-            {
-                Node2 N2 = (Node2)solution[i];
-                listBox_NdO.Items.Add(Convert.ToString(N1.numero)
-                     + "--->" + Convert.ToString(N2.numero)
-                     + "   : " + Convert.ToString(matrice[N1.numero, N2.numero]));
-                N1 = N2;
-            }
-
-            // g.GetSearchTree(treeView1);
-        }*/
 
         private void button_txt_Click_1(object sender, EventArgs e)
         {
             Random r = new Random();
             int num = r.Next(1, 2);
-            string txt = "graphe" + num + ".txt";
+            string txt = "../../graphe" + num + ".txt";
 
             StreamReader monStreamReader = new StreamReader(txt);
 
@@ -76,12 +53,14 @@ namespace QCM.Partie_II
 
             // Affichage aléatoire du noeud initial à explorer
             labelNdInit.Text = (r.Next(1, nbnodes).ToString());
+            // Affichage aléatoire du noeud final
+            labelNdFinal.Text = (r.Next(1, nbnodes).ToString());
 
-            // 2ème ligne : image associé
+            // 2ème ligne : image associée
             ligne = monStreamReader.ReadLine();
             i = 0;
             while (ligne[i] != ':') i++;
-            string img = "";
+            string img = "../../";
             i++; // On dépasse le ":"
             while (ligne[i] == ' ') i++; // on saute les blancs éventuels
             while (i < ligne.Length)
@@ -130,7 +109,7 @@ namespace QCM.Partie_II
 
                 matrice[N1, N2] = val;
                 matrice[N2, N1] = val;
-                listBoxgraphe.Items.Add(Convert.ToString(N1)
+                listBoxgraphe1.Items.Add(Convert.ToString(N1)
                    + "--->" + Convert.ToString(N2)
                    + "   : " + Convert.ToString(matrice[N1, N2]));
 
@@ -139,7 +118,7 @@ namespace QCM.Partie_II
             // Fermeture du StreamReader (obligatoire) 
             monStreamReader.Close();
 
-            pictureBox1.Size = Image.FromFile(img).Size;
+            //pictureBox1.Size = Image.FromFile(img).Size;
             pictureBox1.Image = Image.FromFile(img);
 
             for (int m=1 ; m < nbnodes+1; m++)
@@ -156,9 +135,6 @@ namespace QCM.Partie_II
             // Affichage du premier noeud à explorer
             listBox_NdO.Items.Add(labelNdInit.Text + "; ");
             listBox_NdF.Items.Add(" ");
-
-
-
         }
 
         private void buttonValid_Click(object sender, EventArgs e)
@@ -185,6 +161,28 @@ namespace QCM.Partie_II
                 checkedListBox_NdO.SetItemCheckState(i, CheckState.Unchecked);
             }
 
+        }
+
+        private void buttonA_Click(object sender, EventArgs e)
+        {
+            numinitial = Convert.ToInt32(labelNdInit.Text);
+            numfinal = Convert.ToInt32(labelNdFinal.Text);
+            SearchTree g = new SearchTree();
+            Node2 N0 = new Node2();
+            N0.numero = numinitial;
+            List<GenericNode> solution = g.RechercheSolutionAEtoile(N0);
+
+            Node2 N1 = N0;
+            for (int i = 1; i < solution.Count; i++)
+            {
+                Node2 N2 = (Node2)solution[i];
+                listBoxgraphe2.Items.Add(Convert.ToString(N1.numero)
+                     + "--->" + Convert.ToString(N2.numero)
+                     + "   : " + Convert.ToString(matrice[N1.numero, N2.numero]));
+                N1 = N2;
+            }
+
+            g.GetSearchTree(treeView1);
         }
     }
 }

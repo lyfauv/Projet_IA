@@ -1,0 +1,10 @@
+﻿nombre de noeuds : 6
+img: img2.png
+arc1 :1 2 10
+arc2 :1 3 15
+arc3 :2 4 12
+arc4 :2 5 15
+arc5 :4 5 1
+arc6 :5 6 5
+arc7 :4 6 2
+arc8 :3 6 10
