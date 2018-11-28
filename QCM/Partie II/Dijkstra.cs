@@ -26,7 +26,7 @@ namespace QCM.Partie_II
         private void button_txt_Click_1(object sender, EventArgs e)
         {
             Random r = new Random();
-            int num = r.Next(1, 2);
+            int num = r.Next(1, 3);
             string txt = "../../graphe" + num + ".txt";
 
             StreamReader monStreamReader = new StreamReader(txt);
@@ -52,9 +52,9 @@ namespace QCM.Partie_II
                     matrice[k, j] = -1;
 
             // Affichage aléatoire du noeud initial à explorer
-            labelNdInit.Text = (r.Next(1, nbnodes).ToString());
+            labelNdInit.Text = (r.Next(1, nbnodes+1).ToString());
             // Affichage aléatoire du noeud final
-            labelNdFinal.Text = (r.Next(1, nbnodes).ToString());
+            labelNdFinal.Text = (r.Next(1, nbnodes+1).ToString());
 
             // 2ème ligne : image associée
             ligne = monStreamReader.ReadLine();
