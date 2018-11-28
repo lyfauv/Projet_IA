@@ -18,6 +18,8 @@ namespace QCM.Partie_II
         static public string img;
         static public int numinitial;
         static public int numfinal;
+        static public string[,] t_JoueurNd, t_OrdinateurNd;
+ 
         public Dijkstra()
         {
             InitializeComponent();
@@ -54,7 +56,10 @@ namespace QCM.Partie_II
             // Affichage aléatoire du noeud initial à explorer
             labelNdInit.Text = (r.Next(1, nbnodes+1).ToString());
             // Affichage aléatoire du noeud final
-            labelNdFinal.Text = (r.Next(1, nbnodes+1).ToString());
+            do
+            {
+                labelNdFinal.Text = (r.Next(1, nbnodes + 1).ToString());
+            } while (labelNdFinal.Text == labelNdInit.Text);
 
             // 2ème ligne : image associée
             ligne = monStreamReader.ReadLine();
@@ -135,6 +140,65 @@ namespace QCM.Partie_II
             // Affichage du premier noeud à explorer
             listBox_NdO.Items.Add(labelNdInit.Text + "; ");
             listBox_NdF.Items.Add(" ");
+
+
+
+            // AFFICHAGE DE L'ARBRE VIDE
+
+            /*numinitial = Convert.ToInt32(labelNdInit.Text);
+            numfinal = Convert.ToInt32(labelNdFinal.Text);
+            SearchTree g = new SearchTree();
+            Node2 N0 = new Node2();
+            N0.numero = numinitial;
+            List<GenericNode> solution = g.RechercheSolutionAEtoile(N0);
+
+            Node2 N1 = N0;
+            for (int i = 1; i < solution.Count; i++)
+            {
+                Node2 N2 = (Node2)solution[i];
+                listBoxgraphe2.Items.Add(Convert.ToString(N1.numero)
+                     + "--->" + Convert.ToString(N2.numero)
+                     + "   : " + Convert.ToString(matrice[N1.numero, N2.numero]));
+                N1 = N2;
+            }
+
+            g.GetSearchTree(treeView1);*/
+
+            numinitial = Convert.ToInt32(labelNdInit.Text);
+            numfinal = Convert.ToInt32(labelNdFinal.Text);
+            SearchTree g = new SearchTree();
+            Node2 N0 = new Node2();
+            N0.numero = numinitial;
+            List<GenericNode> solution = g.RechercheSolutionAEtoile(N0);
+
+            g.GetSearchTreeVoid(treeView1);
+        }
+
+        private void buttonValider_Click(object sender, EventArgs e)
+        {
+            // PHASE DE CORRECTION
+            bool noeudsO = true; ;
+            bool noeudsF;
+            bool arbre;
+            SearchTree t = new SearchTree();
+
+            //if(listBox_NdO.Items.Count == t.L_Etats.Count)
+            for (int i = 0; i < listBox_NdO.Items.Count; i++)
+            {
+                if (t_JoueurNd[i, 0] == ";")
+                { }
+                else
+                {
+                    if (t_JoueurNd[i, 0] != t.L_Etats[i, 0].ToString())
+                    {
+                        noeudsO = false;
+                    }
+                }
+            }
+            if (noeudsO)
+                labelNoteNoeud.Text = 20.ToString();
+            else
+                labelNoteNoeud.Text = 0.ToString();
         }
 
         private void buttonValid_Click(object sender, EventArgs e)
@@ -161,28 +225,18 @@ namespace QCM.Partie_II
                 checkedListBox_NdO.SetItemCheckState(i, CheckState.Unchecked);
             }
 
-        }
+            // Construction d'un tableau avec les états des noeuds choisis par le joueur
+            t_JoueurNd = new string[listBox_NdO.Items.Count, 2];
 
-        private void buttonA_Click(object sender, EventArgs e)
-        {
-            numinitial = Convert.ToInt32(labelNdInit.Text);
-            numfinal = Convert.ToInt32(labelNdFinal.Text);
-            SearchTree g = new SearchTree();
-            Node2 N0 = new Node2();
-            N0.numero = numinitial;
-            List<GenericNode> solution = g.RechercheSolutionAEtoile(N0);
-
-            Node2 N1 = N0;
-            for (int i = 1; i < solution.Count; i++)
+            for (int i = 0; i < listBox_NdO.Items.Count; i++)
             {
-                Node2 N2 = (Node2)solution[i];
-                listBoxgraphe2.Items.Add(Convert.ToString(N1.numero)
-                     + "--->" + Convert.ToString(N2.numero)
-                     + "   : " + Convert.ToString(matrice[N1.numero, N2.numero]));
-                N1 = N2;
+                t_JoueurNd[i, 0] = listBox_NdO.Items[i].ToString();
             }
 
-            g.GetSearchTree(treeView1);
+            for (int i = 0; i < listBox_NdF.Items.Count; i++)
+            {
+                t_JoueurNd[i,1] = listBox_NdF.Items[i].ToString();
+            }
         }
     }
 }

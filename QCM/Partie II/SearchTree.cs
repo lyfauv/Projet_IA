@@ -10,6 +10,8 @@ namespace QCM.Partie_II
     {
         public List<GenericNode> L_Ouverts;
         public List<GenericNode> L_Fermes;
+        public List<GenericNode>[,] L_Etats;
+        public int nbEtats;
 
         public int CountInOpenList()
         {
@@ -54,6 +56,12 @@ namespace QCM.Partie_II
             GenericNode N = N0;
             L_Ouverts.Add(N0);
 
+            // Etat initial de la solution
+            L_Etats = new List<GenericNode>[10, 2];
+            L_Etats[nbEtats, 0] = L_Ouverts;
+            L_Etats[nbEtats, 1] = L_Fermes;
+            nbEtats++;
+
             // tant que le noeud n'est pas terminal et que ouverts n'est pas vide
             while (L_Ouverts.Count != 0 && N.EndState() == false)
             {
@@ -61,6 +69,12 @@ namespace QCM.Partie_II
                 // On le place dans les fermés
                 L_Ouverts.Remove(N);
                 L_Fermes.Add(N);
+
+                // Etat de la solution
+                L_Etats = new List<GenericNode>[10, 2];
+                L_Etats[nbEtats, 0] = L_Ouverts;
+                L_Etats[nbEtats, 1] = L_Fermes;
+                nbEtats++;
 
                 // Il faut trouver les noeuds successeurs de N
                 this.MAJSuccesseurs(N);
@@ -190,6 +204,22 @@ namespace QCM.Partie_II
             AjouteBranche(L_Fermes[0], TN);
         }
 
+        // Si on veut afficher l'arbre de recherche, il suffit de passer un treeview en paramètres
+        // Celui-ci est mis à jour avec les noeuds de la liste des fermés, on ne tient pas compte des ouverts
+        public void GetSearchTreeVoid(TreeView TV)
+        {
+            if (L_Fermes == null) return;
+            if (L_Fermes.Count == 0) return;
+
+            // On suppose le TreeView préexistant
+            TV.Nodes.Clear();
+
+            TreeNode TN = new TreeNode("__");
+            TV.Nodes.Add(TN);
+
+            AjouteBrancheVoid(L_Fermes[0], TN);
+        }
+
         // AjouteBranche est exclusivement appelée par GetSearchTree; les noeuds sont ajoutés de manière récursive
         private void AjouteBranche(GenericNode GN, TreeNode TN)
         {
@@ -198,6 +228,17 @@ namespace QCM.Partie_II
                 TreeNode TNfils = new TreeNode(GNfils.ToString());
                 TN.Nodes.Add(TNfils);
                 if (GNfils.GetEnfants().Count > 0) AjouteBranche(GNfils, TNfils);
+            }
+        }
+
+        // AjouteBranche est exclusivement appelée par GetSearchTree; les noeuds sont ajoutés de manière récursive
+        private void AjouteBrancheVoid(GenericNode GN, TreeNode TN)
+        {
+            foreach (GenericNode GNfils in GN.GetEnfants())
+            {
+                TreeNode TNfils = new TreeNode("__");
+                TN.Nodes.Add(TNfils);
+                if (GNfils.GetEnfants().Count > 0) AjouteBrancheVoid(GNfils, TNfils);
             }
         }
     }
