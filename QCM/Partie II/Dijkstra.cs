@@ -19,7 +19,10 @@ namespace QCM.Partie_II
         static public int numinitial;
         static public int numfinal;
         static public string[,] t_JoueurNd, t_OrdinateurNd;
- 
+        List<GenericNode> solution;
+
+
+
         public Dijkstra()
         {
             InitializeComponent();
@@ -54,7 +57,7 @@ namespace QCM.Partie_II
                     matrice[k, j] = -1;
 
             // Affichage aléatoire du noeud initial à explorer
-            labelNdInit.Text = (r.Next(1, nbnodes+1).ToString());
+            labelNdInit.Text = (r.Next(1, nbnodes + 1).ToString());
             // Affichage aléatoire du noeud final
             do
             {
@@ -126,7 +129,7 @@ namespace QCM.Partie_II
             //pictureBox1.Size = Image.FromFile(img).Size;
             pictureBox1.Image = Image.FromFile(img);
 
-            for (int m=1 ; m < nbnodes+1; m++)
+            for (int m = 1; m < nbnodes + 1; m++)
             {
                 checkedListBox_NdO.Items.Add(m);
             }
@@ -144,63 +147,70 @@ namespace QCM.Partie_II
 
 
             // AFFICHAGE DE L'ARBRE VIDE
-
-            /*numinitial = Convert.ToInt32(labelNdInit.Text);
-            numfinal = Convert.ToInt32(labelNdFinal.Text);
-            SearchTree g = new SearchTree();
-            Node2 N0 = new Node2();
-            N0.numero = numinitial;
-            List<GenericNode> solution = g.RechercheSolutionAEtoile(N0);
-
-            Node2 N1 = N0;
-            for (int i = 1; i < solution.Count; i++)
-            {
-                Node2 N2 = (Node2)solution[i];
-                listBoxgraphe2.Items.Add(Convert.ToString(N1.numero)
-                     + "--->" + Convert.ToString(N2.numero)
-                     + "   : " + Convert.ToString(matrice[N1.numero, N2.numero]));
-                N1 = N2;
-            }
-
-            g.GetSearchTree(treeView1);*/
-
             numinitial = Convert.ToInt32(labelNdInit.Text);
             numfinal = Convert.ToInt32(labelNdFinal.Text);
             SearchTree g = new SearchTree();
             Node2 N0 = new Node2();
             N0.numero = numinitial;
-            List<GenericNode> solution = g.RechercheSolutionAEtoile(N0);
+            solution = g.RechercheSolutionAEtoile(N0);
 
             g.GetSearchTreeVoid(treeView1);
+            g.GetSearchTree(treeView2);
         }
 
-        private void buttonValider_Click(object sender, EventArgs e)
+
+        private void buttonTerminer_Click(object sender, EventArgs e)
         {
+
             // PHASE DE CORRECTION
-            bool noeudsO = true; ;
-            bool noeudsF;
-            bool arbre;
+            bool validExo = true;
             SearchTree t = new SearchTree();
 
-            //if(listBox_NdO.Items.Count == t.L_Etats.Count)
-            for (int i = 0; i < listBox_NdO.Items.Count; i++)
+
+            if (listBox_NdO.Items.Count == t.L_Etats.Length)
             {
-                if (t_JoueurNd[i, 0] == ";")
-                { }
-                else
+                //Véfification Noeud Ouvert 
+                for (int i = 0; i < listBox_NdO.Items.Count; i++)
                 {
-                    if (t_JoueurNd[i, 0] != t.L_Etats[i, 0].ToString())
+                    if (t_JoueurNd[i, 0] == ";")
+                    { }
+                    else
                     {
-                        noeudsO = false;
+                        if (t_JoueurNd[i, 0] != t.L_Etats[i, 0].ToString())
+                        {
+                            validExo = false;
+                        }
+
+                    }
+                }
+                //Véfification Noeud Fermé 
+                for (int i = 0; i < listBox_NdF.Items.Count; i++)
+                {
+                    if (t_JoueurNd[i, 1] == ";")
+                    { }
+                    else
+                    {
+                        if (t_JoueurNd[i, 1] != t.L_Etats[i, 1].ToString())
+                        {
+                            validExo = false;
+                        }
                     }
                 }
             }
-            if (noeudsO)
-                labelNoteNoeud.Text = 20.ToString();
             else
-                labelNoteNoeud.Text = 0.ToString();
-        }
+                validExo = false;
 
+            //Vérification Arbre 
+            int j = 0; 
+            while(j < treeView1.Nodes.Count || validExo==true)
+            {
+                if (treeView1.Nodes[j] != treeView2.Nodes[j])
+                {
+                    validExo = false;
+                }
+            }
+        }
+        
         private void buttonValid_Click(object sender, EventArgs e)
         {
 
