@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QCM.Partie_II;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -133,7 +134,7 @@ namespace QCM
 
             numQuestion++;
 
-            if (numQuestion <= 20)
+            if (numQuestion <= 19) // On ne va pas jusqu'à 20 pour laisser une question concernant Dijkstra
             {
                 // On regarde si la réponse cochée est la bonne
                 if (Rep1.Checked || Rep2.Checked || Rep3.Checked || Rep4.Checked)
@@ -197,6 +198,11 @@ namespace QCM
                 // Affichage des réponses de la question suivante
                 AfficheReponses(numQuestionDonne);
             }
+            else if(numQuestion == 20) // Question Dijkstra
+            {
+                Form formulaire = new Dijkstra();
+                formulaire.ShowDialog();
+            }
             else
             {
                 // On cache tous ce qui est en rapport avec les questions et on fait apparaître le label de fin du QCM
@@ -212,13 +218,22 @@ namespace QCM
 
                 string reussite = "mince";
 
-                if (((score * 20) / 26) >= 10)
+                // On cherche le score total des questions
+                int scoreTotal = 0;
+                foreach(int element in questionPassees)
+                {
+                    scoreTotal += lecteur.retournerScore(element, fichier);
+                }
+
+                scoreTotal += 3; // Correspond au score de la question Dijkstra
+
+                if (((score * 20) / scoreTotal) >= 10)
                     reussite = "Vous avez réussi votre examen ! :-)";
                 else
                     reussite = "Il vous manque encore quelques connaissances sur le sujet :s";
 
-                // On convertit la note sur 26 sur 20 et on affiche la note obtenue
-                Fin.Text = "Vous avez terminé ! Vous avez obtenu une note de " + ((score * 20) / 26) + " / 20 ! \n" + reussite;
+                // On convertit la note sur 20 et on affiche la note obtenue
+                Fin.Text = "Vous avez terminé ! Vous avez obtenu une note de " + ((score * 20) / scoreTotal) + " / 20 ! \n" + reussite;
             }
         }
     }
