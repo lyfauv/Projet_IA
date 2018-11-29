@@ -174,7 +174,7 @@ namespace QCM.Partie_II
             g.GetSearchTreeVoid(treeView1);
         }
 
-        private void buttonValider_Click(object sender, EventArgs e)
+        /*private void buttonValider_Click(object sender, EventArgs e)
         {
             // PHASE DE CORRECTION
             bool noeudsO = true; ;
@@ -199,7 +199,7 @@ namespace QCM.Partie_II
                 labelNoteNoeud.Text = 20.ToString();
             else
                 labelNoteNoeud.Text = 0.ToString();
-        }
+        }*/
 
         private void buttonValid_Click(object sender, EventArgs e)
         {

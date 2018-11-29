@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dijkstra));
             this.listBoxgraphe1 = new System.Windows.Forms.ListBox();
             this.button_txt = new System.Windows.Forms.Button();
             this.listBox_NdO = new System.Windows.Forms.ListBox();
@@ -48,7 +49,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.buttonTerminer = new System.Windows.Forms.Button();
-            this.labelNoteNoeud = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -58,7 +59,7 @@
             // listBoxgraphe1
             // 
             this.listBoxgraphe1.FormattingEnabled = true;
-            this.listBoxgraphe1.Location = new System.Drawing.Point(529, 55);
+            this.listBoxgraphe1.Location = new System.Drawing.Point(529, 143);
             this.listBoxgraphe1.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxgraphe1.Name = "listBoxgraphe1";
             this.listBoxgraphe1.Size = new System.Drawing.Size(100, 186);
@@ -66,7 +67,7 @@
             // 
             // button_txt
             // 
-            this.button_txt.Location = new System.Drawing.Point(12, 12);
+            this.button_txt.Location = new System.Drawing.Point(12, 108);
             this.button_txt.Name = "button_txt";
             this.button_txt.Size = new System.Drawing.Size(68, 23);
             this.button_txt.TabIndex = 18;
@@ -85,7 +86,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(277, 17);
+            this.label2.Location = new System.Drawing.Point(277, 113);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 15;
@@ -94,7 +95,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(123, 17);
+            this.label1.Location = new System.Drawing.Point(123, 113);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 14;
@@ -103,7 +104,7 @@
             // pictureBox1
             // 
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 55);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 143);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(498, 186);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -167,7 +168,7 @@
             // labelNdInit
             // 
             this.labelNdInit.AutoSize = true;
-            this.labelNdInit.Location = new System.Drawing.Point(200, 17);
+            this.labelNdInit.Location = new System.Drawing.Point(200, 113);
             this.labelNdInit.Name = "labelNdInit";
             this.labelNdInit.Size = new System.Drawing.Size(13, 13);
             this.labelNdInit.TabIndex = 32;
@@ -176,7 +177,7 @@
             // labelNdFinal
             // 
             this.labelNdFinal.AutoSize = true;
-            this.labelNdFinal.Location = new System.Drawing.Point(350, 17);
+            this.labelNdFinal.Location = new System.Drawing.Point(350, 113);
             this.labelNdFinal.Name = "labelNdFinal";
             this.labelNdFinal.Size = new System.Drawing.Size(13, 13);
             this.labelNdFinal.TabIndex = 33;
@@ -202,8 +203,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.labelNoteNoeud);
             this.groupBox1.Controls.Add(this.checkedListBox_NdO);
             this.groupBox1.Controls.Add(this.checkedListBox_NdF);
             this.groupBox1.Controls.Add(this.buttonValid);
@@ -213,7 +212,7 @@
             this.groupBox1.Controls.Add(this.labeltxtNdO);
             this.groupBox1.Controls.Add(this.listBox_NdF);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(10, 257);
+            this.groupBox1.Location = new System.Drawing.Point(10, 345);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(457, 249);
             this.groupBox1.TabIndex = 52;
@@ -223,7 +222,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.treeView1);
-            this.groupBox2.Location = new System.Drawing.Point(473, 257);
+            this.groupBox2.Location = new System.Drawing.Point(473, 345);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(168, 249);
             this.groupBox2.TabIndex = 53;
@@ -240,37 +239,40 @@
             // 
             // buttonTerminer
             // 
-            this.buttonTerminer.Location = new System.Drawing.Point(280, 512);
+            this.buttonTerminer.Location = new System.Drawing.Point(280, 600);
             this.buttonTerminer.Name = "buttonTerminer";
             this.buttonTerminer.Size = new System.Drawing.Size(98, 31);
             this.buttonTerminer.TabIndex = 52;
             this.buttonTerminer.Text = "Terminer";
             this.buttonTerminer.UseVisualStyleBackColor = true;
-            this.buttonTerminer.Click += new System.EventHandler(this.buttonValider_Click);
+           // this.buttonTerminer.Click += new System.EventHandler(this.buttonValider_Click);
             // 
-            // labelNoteNoeud
+            // label3
             // 
-            this.labelNoteNoeud.AutoSize = true;
-            this.labelNoteNoeud.Location = new System.Drawing.Point(279, 221);
-            this.labelNoteNoeud.Name = "labelNoteNoeud";
-            this.labelNoteNoeud.Size = new System.Drawing.Size(10, 13);
-            this.labelNoteNoeud.TabIndex = 52;
-            this.labelNoteNoeud.Text = " ";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(273, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 29);
+            this.label3.TabIndex = 54;
+            this.label3.Text = "Dijkstra";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(295, 220);
+            this.label5.Location = new System.Drawing.Point(15, 56);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(24, 13);
-            this.label5.TabIndex = 53;
-            this.label5.Text = "/20";
+            this.label5.Size = new System.Drawing.Size(629, 26);
+            this.label5.TabIndex = 55;
+            this.label5.Text = resources.GetString("label5.Text");
             // 
             // Dijkstra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 558);
+            this.ClientSize = new System.Drawing.Size(656, 635);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonTerminer);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -314,7 +316,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Button buttonTerminer;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label labelNoteNoeud;
     }
 }

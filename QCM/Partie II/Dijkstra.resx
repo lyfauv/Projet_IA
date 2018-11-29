@@ -117,4 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Appuyez sur le bouton &lt;Init&gt; pour commencer l'exercice. Dans un premier temps, vous trouverez le chemin le plus court en explorant
+ le graphe en indiquant à chaque étape les noeuds ouverts et fermés. Puis, vous compléterez l'arbre généré automatiquement. </value>
+  </data>
 </root>

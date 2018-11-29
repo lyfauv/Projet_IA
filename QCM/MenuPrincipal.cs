@@ -22,6 +22,8 @@ namespace QCM
         {
             Form formulaire = new questionnaire();
             formulaire.ShowDialog();
+            Form dij = new Dijkstra();
+            dij.ShowDialog();
         }
     }
 }
