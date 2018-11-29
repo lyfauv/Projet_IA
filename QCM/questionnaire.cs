@@ -55,12 +55,6 @@ namespace QCM
             Rep4.Text = lecteur.retournerReponse(numQuestion, 4, fichier);
         }
 
-
-        private void NumQuestion_Click(object sender, EventArgs e)
-        {
-
-        }
-
         /// <summary>
         /// On commence le test après avoir cliqué sur le bouton commencer
         /// </summary>
@@ -226,16 +220,6 @@ namespace QCM
                 // On convertit la note sur 26 sur 20 et on affiche la note obtenue
                 Fin.Text = "Vous avez terminé ! Vous avez obtenu une note de " + ((score * 20) / 26) + " / 20 ! \n" + reussite;
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void questionnaire_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

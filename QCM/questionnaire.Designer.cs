@@ -46,22 +46,19 @@
             // 
             this.NumQuestion.AutoSize = true;
             this.NumQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.NumQuestion.Location = new System.Drawing.Point(52, 34);
-            this.NumQuestion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.NumQuestion.Location = new System.Drawing.Point(39, 28);
             this.NumQuestion.Name = "NumQuestion";
-            this.NumQuestion.Size = new System.Drawing.Size(181, 39);
+            this.NumQuestion.Size = new System.Drawing.Size(145, 31);
             this.NumQuestion.TabIndex = 0;
             this.NumQuestion.Text = "Question 0";
             this.NumQuestion.Visible = false;
-            this.NumQuestion.Click += new System.EventHandler(this.NumQuestion_Click);
             // 
             // Question
             // 
             this.Question.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Question.Location = new System.Drawing.Point(56, 114);
-            this.Question.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Question.Location = new System.Drawing.Point(42, 93);
             this.Question.Name = "Question";
-            this.Question.Size = new System.Drawing.Size(384, 115);
+            this.Question.Size = new System.Drawing.Size(288, 93);
             this.Question.TabIndex = 1;
             this.Question.Text = "La question";
             this.Question.Visible = false;
@@ -69,10 +66,9 @@
             // Valider
             // 
             this.Valider.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Valider.Location = new System.Drawing.Point(667, 505);
-            this.Valider.Margin = new System.Windows.Forms.Padding(4);
+            this.Valider.Location = new System.Drawing.Point(500, 410);
             this.Valider.Name = "Valider";
-            this.Valider.Size = new System.Drawing.Size(175, 39);
+            this.Valider.Size = new System.Drawing.Size(131, 32);
             this.Valider.TabIndex = 3;
             this.Valider.Text = "Valider";
             this.Valider.UseVisualStyleBackColor = true;
@@ -82,24 +78,21 @@
             // Fin
             // 
             this.Fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Fin.Location = new System.Drawing.Point(272, 102);
-            this.Fin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Fin.Location = new System.Drawing.Point(204, 83);
             this.Fin.Name = "Fin";
-            this.Fin.Size = new System.Drawing.Size(427, 226);
+            this.Fin.Size = new System.Drawing.Size(320, 184);
             this.Fin.TabIndex = 4;
             this.Fin.Text = "Label";
             this.Fin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Fin.UseMnemonic = false;
             this.Fin.Visible = false;
-            this.Fin.Click += new System.EventHandler(this.label1_Click);
             // 
             // Suivant
             // 
             this.Suivant.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Suivant.Location = new System.Drawing.Point(347, 570);
-            this.Suivant.Margin = new System.Windows.Forms.Padding(4);
+            this.Suivant.Location = new System.Drawing.Point(260, 463);
             this.Suivant.Name = "Suivant";
-            this.Suivant.Size = new System.Drawing.Size(240, 39);
+            this.Suivant.Size = new System.Drawing.Size(180, 32);
             this.Suivant.TabIndex = 5;
             this.Suivant.Text = "Commencer le Test";
             this.Suivant.UseVisualStyleBackColor = true;
@@ -108,10 +101,9 @@
             // Rep1
             // 
             this.Rep1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Rep1.Location = new System.Drawing.Point(61, 221);
-            this.Rep1.Margin = new System.Windows.Forms.Padding(4);
+            this.Rep1.Location = new System.Drawing.Point(46, 180);
             this.Rep1.Name = "Rep1";
-            this.Rep1.Size = new System.Drawing.Size(799, 69);
+            this.Rep1.Size = new System.Drawing.Size(599, 56);
             this.Rep1.TabIndex = 7;
             this.Rep1.TabStop = true;
             this.Rep1.Text = "Rep1";
@@ -121,10 +113,9 @@
             // Rep2
             // 
             this.Rep2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Rep2.Location = new System.Drawing.Point(59, 289);
-            this.Rep2.Margin = new System.Windows.Forms.Padding(4);
+            this.Rep2.Location = new System.Drawing.Point(44, 235);
             this.Rep2.Name = "Rep2";
-            this.Rep2.Size = new System.Drawing.Size(799, 69);
+            this.Rep2.Size = new System.Drawing.Size(599, 56);
             this.Rep2.TabIndex = 8;
             this.Rep2.TabStop = true;
             this.Rep2.Text = "Rep2";
@@ -134,10 +125,9 @@
             // Rep3
             // 
             this.Rep3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Rep3.Location = new System.Drawing.Point(60, 360);
-            this.Rep3.Margin = new System.Windows.Forms.Padding(4);
+            this.Rep3.Location = new System.Drawing.Point(45, 292);
             this.Rep3.Name = "Rep3";
-            this.Rep3.Size = new System.Drawing.Size(799, 69);
+            this.Rep3.Size = new System.Drawing.Size(599, 56);
             this.Rep3.TabIndex = 9;
             this.Rep3.TabStop = true;
             this.Rep3.Text = "Rep3";
@@ -147,10 +137,9 @@
             // Rep4
             // 
             this.Rep4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Rep4.Location = new System.Drawing.Point(60, 434);
-            this.Rep4.Margin = new System.Windows.Forms.Padding(4);
+            this.Rep4.Location = new System.Drawing.Point(45, 353);
             this.Rep4.Name = "Rep4";
-            this.Rep4.Size = new System.Drawing.Size(799, 69);
+            this.Rep4.Size = new System.Drawing.Size(599, 56);
             this.Rep4.TabIndex = 10;
             this.Rep4.TabStop = true;
             this.Rep4.Text = "Rep4";
@@ -159,9 +148,10 @@
             // 
             // Image
             // 
-            this.Image.Location = new System.Drawing.Point(447, 1);
+            this.Image.Location = new System.Drawing.Point(335, 1);
+            this.Image.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Image.Name = "Image";
-            this.Image.Size = new System.Drawing.Size(449, 228);
+            this.Image.Size = new System.Drawing.Size(337, 185);
             this.Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Image.TabIndex = 11;
             this.Image.TabStop = false;
@@ -170,10 +160,9 @@
             // Explications
             // 
             this.Explications.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Explications.Location = new System.Drawing.Point(73, 171);
-            this.Explications.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Explications.Location = new System.Drawing.Point(55, 139);
             this.Explications.Name = "Explications";
-            this.Explications.Size = new System.Drawing.Size(785, 305);
+            this.Explications.Size = new System.Drawing.Size(589, 248);
             this.Explications.TabIndex = 6;
             this.Explications.Text = "Label";
             this.Explications.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -181,9 +170,9 @@
             // 
             // questionnaire
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 681);
+            this.ClientSize = new System.Drawing.Size(701, 553);
             this.Controls.Add(this.Image);
             this.Controls.Add(this.Rep4);
             this.Controls.Add(this.Rep3);
@@ -196,11 +185,9 @@
             this.Controls.Add(this.NumQuestion);
             this.Controls.Add(this.Rep1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "questionnaire";
             this.Text = "questionnaire";
-            this.Load += new System.EventHandler(this.questionnaire_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

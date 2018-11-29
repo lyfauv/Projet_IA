@@ -30,7 +30,6 @@
         {
             this.Titre = new System.Windows.Forms.Label();
             this.QCM = new System.Windows.Forms.Button();
-            this.Dijkstra = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Titre
@@ -46,31 +45,19 @@
             // QCM
             // 
             this.QCM.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.QCM.Location = new System.Drawing.Point(230, 198);
+            this.QCM.Location = new System.Drawing.Point(217, 250);
             this.QCM.Name = "QCM";
             this.QCM.Size = new System.Drawing.Size(292, 44);
             this.QCM.TabIndex = 1;
-            this.QCM.Text = "Tester mes connaissances sur l\'IA";
+            this.QCM.Text = "Commencer le Test";
             this.QCM.UseVisualStyleBackColor = true;
             this.QCM.Click += new System.EventHandler(this.QCM_Click);
-            // 
-            // Dijkstra
-            // 
-            this.Dijkstra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Dijkstra.Location = new System.Drawing.Point(230, 291);
-            this.Dijkstra.Name = "Dijkstra";
-            this.Dijkstra.Size = new System.Drawing.Size(292, 44);
-            this.Dijkstra.TabIndex = 2;
-            this.Dijkstra.Text = "Tester mes connaissances sur l\'algorithme de Dijkstra";
-            this.Dijkstra.UseVisualStyleBackColor = true;
-            this.Dijkstra.Click += new System.EventHandler(this.Dijkstra_Click);
             // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(743, 567);
-            this.Controls.Add(this.Dijkstra);
             this.Controls.Add(this.QCM);
             this.Controls.Add(this.Titre);
             this.Name = "MenuPrincipal";
@@ -84,7 +71,6 @@
 
         private System.Windows.Forms.Label Titre;
         private System.Windows.Forms.Button QCM;
-        private System.Windows.Forms.Button Dijkstra;
     }
 }
 

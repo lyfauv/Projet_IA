@@ -23,11 +23,5 @@ namespace QCM
             Form formulaire = new questionnaire();
             formulaire.ShowDialog();
         }
-
-        private void Dijkstra_Click(object sender, EventArgs e)
-        {
-            Form dijkstra = new Dijkstra();
-            dijkstra.ShowDialog();
-        }
     }
 }
