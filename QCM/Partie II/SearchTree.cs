@@ -70,12 +70,6 @@ namespace QCM.Partie_II
                 L_Ouverts.Remove(N);
                 L_Fermes.Add(N);
 
-                // Etat de la solution
-                L_Etats = new List<GenericNode>[10, 2];
-                L_Etats[nbEtats, 0] = L_Ouverts;
-                L_Etats[nbEtats, 1] = L_Fermes;
-                nbEtats++;
-
                 // Il faut trouver les noeuds successeurs de N
                 this.MAJSuccesseurs(N);
                 // Inutile de retrier car les insertions ont été faites en respectant l'ordre
@@ -90,6 +84,11 @@ namespace QCM.Partie_II
                 {
                     N = null;
                 }
+
+                // Etat de la solution
+                L_Etats[nbEtats, 0] = L_Ouverts;
+                L_Etats[nbEtats, 1] = L_Fermes;
+                nbEtats++;
             }
 
             // A* terminé

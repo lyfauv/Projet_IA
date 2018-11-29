@@ -51,6 +51,7 @@
             this.buttonTerminer = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.treeView2 = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -104,9 +105,9 @@
             // pictureBox1
             // 
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 143);
+            this.pictureBox1.Location = new System.Drawing.Point(18, 143);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(498, 186);
+            this.pictureBox1.Size = new System.Drawing.Size(479, 186);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
@@ -222,6 +223,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.treeView1);
+            this.groupBox2.Controls.Add(this.treeView2);
             this.groupBox2.Location = new System.Drawing.Point(473, 345);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(168, 249);
@@ -245,7 +247,7 @@
             this.buttonTerminer.TabIndex = 52;
             this.buttonTerminer.Text = "Terminer";
             this.buttonTerminer.UseVisualStyleBackColor = true;
-           // this.buttonTerminer.Click += new System.EventHandler(this.buttonValider_Click);
+            this.buttonTerminer.Click += new System.EventHandler(this.buttonTerminer_Click);
             // 
             // label3
             // 
@@ -265,6 +267,15 @@
             this.label5.Size = new System.Drawing.Size(629, 26);
             this.label5.TabIndex = 55;
             this.label5.Text = resources.GetString("label5.Text");
+            // 
+            // treeView2
+            // 
+            this.treeView2.LabelEdit = true;
+            this.treeView2.Location = new System.Drawing.Point(11, 19);
+            this.treeView2.Name = "treeView2";
+            this.treeView2.Size = new System.Drawing.Size(145, 215);
+            this.treeView2.TabIndex = 9;
+            this.treeView2.Visible = false;
             // 
             // Dijkstra
             // 
@@ -318,5 +329,6 @@
         private System.Windows.Forms.Button buttonTerminer;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TreeView treeView2;
     }
 }
