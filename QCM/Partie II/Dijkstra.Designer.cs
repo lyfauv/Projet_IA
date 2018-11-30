@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dijkstra));
             this.listBoxgraphe1 = new System.Windows.Forms.ListBox();
-            this.button_txt = new System.Windows.Forms.Button();
+            this.button_Init = new System.Windows.Forms.Button();
             this.listBox_NdO = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,7 +38,7 @@
             this.labellistbox = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.listBox_NdF = new System.Windows.Forms.ListBox();
-            this.buttonValid = new System.Windows.Forms.Button();
+            this.btnEnvoyer = new System.Windows.Forms.Button();
             this.labeltxtNdF = new System.Windows.Forms.Label();
             this.labeltxtNdO = new System.Windows.Forms.Label();
             this.labelNdInit = new System.Windows.Forms.Label();
@@ -46,8 +46,10 @@
             this.checkedListBox_NdO = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox_NdF = new System.Windows.Forms.CheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnValiderNd = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnValiderTree = new System.Windows.Forms.Button();
             this.buttonTerminer = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -66,15 +68,15 @@
             this.listBoxgraphe1.Size = new System.Drawing.Size(100, 186);
             this.listBoxgraphe1.TabIndex = 19;
             // 
-            // button_txt
+            // button_Init
             // 
-            this.button_txt.Location = new System.Drawing.Point(12, 108);
-            this.button_txt.Name = "button_txt";
-            this.button_txt.Size = new System.Drawing.Size(68, 23);
-            this.button_txt.TabIndex = 18;
-            this.button_txt.Text = "Init";
-            this.button_txt.UseVisualStyleBackColor = true;
-            this.button_txt.Click += new System.EventHandler(this.button_txt_Click_1);
+            this.button_Init.Location = new System.Drawing.Point(12, 108);
+            this.button_Init.Name = "button_Init";
+            this.button_Init.Size = new System.Drawing.Size(68, 23);
+            this.button_Init.TabIndex = 18;
+            this.button_Init.Text = "Init";
+            this.button_Init.UseVisualStyleBackColor = true;
+            this.button_Init.Click += new System.EventHandler(this.button_Init_Click);
             // 
             // listBox_NdO
             // 
@@ -138,20 +140,20 @@
             this.listBox_NdF.Size = new System.Drawing.Size(100, 121);
             this.listBox_NdF.TabIndex = 25;
             // 
-            // buttonValid
+            // btnEnvoyer
             // 
-            this.buttonValid.Location = new System.Drawing.Point(63, 212);
-            this.buttonValid.Name = "buttonValid";
-            this.buttonValid.Size = new System.Drawing.Size(98, 31);
-            this.buttonValid.TabIndex = 26;
-            this.buttonValid.Text = "Valider";
-            this.buttonValid.UseVisualStyleBackColor = true;
-            this.buttonValid.Click += new System.EventHandler(this.buttonValid_Click);
+            this.btnEnvoyer.Location = new System.Drawing.Point(61, 203);
+            this.btnEnvoyer.Name = "btnEnvoyer";
+            this.btnEnvoyer.Size = new System.Drawing.Size(98, 31);
+            this.btnEnvoyer.TabIndex = 26;
+            this.btnEnvoyer.Text = "Envoyer ";
+            this.btnEnvoyer.UseVisualStyleBackColor = true;
+            this.btnEnvoyer.Click += new System.EventHandler(this.btnEnvoyer_Click);
             // 
             // labeltxtNdF
             // 
             this.labeltxtNdF.AutoSize = true;
-            this.labeltxtNdF.Location = new System.Drawing.Point(116, 37);
+            this.labeltxtNdF.Location = new System.Drawing.Point(116, 36);
             this.labeltxtNdF.Name = "labeltxtNdF";
             this.labeltxtNdF.Size = new System.Drawing.Size(68, 13);
             this.labeltxtNdF.TabIndex = 31;
@@ -160,7 +162,7 @@
             // labeltxtNdO
             // 
             this.labeltxtNdO.AutoSize = true;
-            this.labeltxtNdO.Location = new System.Drawing.Point(22, 38);
+            this.labeltxtNdO.Location = new System.Drawing.Point(22, 37);
             this.labeltxtNdO.Name = "labeltxtNdO";
             this.labeltxtNdO.Size = new System.Drawing.Size(72, 13);
             this.labeltxtNdO.TabIndex = 30;
@@ -190,7 +192,7 @@
             this.checkedListBox_NdO.FormattingEnabled = true;
             this.checkedListBox_NdO.Location = new System.Drawing.Point(25, 52);
             this.checkedListBox_NdO.Name = "checkedListBox_NdO";
-            this.checkedListBox_NdO.Size = new System.Drawing.Size(89, 154);
+            this.checkedListBox_NdO.Size = new System.Drawing.Size(89, 139);
             this.checkedListBox_NdO.TabIndex = 50;
             // 
             // checkedListBox_NdF
@@ -199,14 +201,15 @@
             this.checkedListBox_NdF.FormattingEnabled = true;
             this.checkedListBox_NdF.Location = new System.Drawing.Point(119, 53);
             this.checkedListBox_NdF.Name = "checkedListBox_NdF";
-            this.checkedListBox_NdF.Size = new System.Drawing.Size(89, 154);
+            this.checkedListBox_NdF.Size = new System.Drawing.Size(89, 139);
             this.checkedListBox_NdF.TabIndex = 51;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnValiderNd);
             this.groupBox1.Controls.Add(this.checkedListBox_NdO);
             this.groupBox1.Controls.Add(this.checkedListBox_NdF);
-            this.groupBox1.Controls.Add(this.buttonValid);
+            this.groupBox1.Controls.Add(this.btnEnvoyer);
             this.groupBox1.Controls.Add(this.listBox_NdO);
             this.groupBox1.Controls.Add(this.labeltxtNdF);
             this.groupBox1.Controls.Add(this.labellistbox);
@@ -220,8 +223,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Algorithme Dijtstra";
             // 
+            // btnValiderNd
+            // 
+            this.btnValiderNd.Location = new System.Drawing.Point(288, 203);
+            this.btnValiderNd.Name = "btnValiderNd";
+            this.btnValiderNd.Size = new System.Drawing.Size(98, 31);
+            this.btnValiderNd.TabIndex = 52;
+            this.btnValiderNd.Text = "Valider";
+            this.btnValiderNd.UseVisualStyleBackColor = true;
+            this.btnValiderNd.Click += new System.EventHandler(this.btnValiderNd_Click);
+            // 
+            // treeView1
+            // 
+            this.treeView1.LabelEdit = true;
+            this.treeView1.Location = new System.Drawing.Point(11, 19);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(145, 173);
+            this.treeView1.TabIndex = 8;
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnValiderTree);
             this.groupBox2.Controls.Add(this.treeView1);
             this.groupBox2.Controls.Add(this.treeView2);
             this.groupBox2.Location = new System.Drawing.Point(473, 345);
@@ -231,13 +253,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Arbre";
             // 
-            // treeView1
+            // btnValiderTree
             // 
-            this.treeView1.LabelEdit = true;
-            this.treeView1.Location = new System.Drawing.Point(11, 19);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(145, 215);
-            this.treeView1.TabIndex = 8;
+            this.btnValiderTree.Location = new System.Drawing.Point(31, 203);
+            this.btnValiderTree.Name = "btnValiderTree";
+            this.btnValiderTree.Size = new System.Drawing.Size(98, 31);
+            this.btnValiderTree.TabIndex = 53;
+            this.btnValiderTree.Text = "Valider";
+            this.btnValiderTree.UseVisualStyleBackColor = true;
+            this.btnValiderTree.Click += new System.EventHandler(this.btnValiderTree_Click);
             // 
             // buttonTerminer
             // 
@@ -270,10 +294,11 @@
             // 
             // treeView2
             // 
+            this.treeView2.FullRowSelect = true;
             this.treeView2.LabelEdit = true;
             this.treeView2.Location = new System.Drawing.Point(11, 19);
             this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(145, 215);
+            this.treeView2.Size = new System.Drawing.Size(145, 173);
             this.treeView2.TabIndex = 9;
             this.treeView2.Visible = false;
             // 
@@ -291,7 +316,7 @@
             this.Controls.Add(this.labelNdInit);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.listBoxgraphe1);
-            this.Controls.Add(this.button_txt);
+            this.Controls.Add(this.button_Init);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Dijkstra";
@@ -308,7 +333,7 @@
         #endregion
 
         private System.Windows.Forms.ListBox listBoxgraphe1;
-        private System.Windows.Forms.Button button_txt;
+        private System.Windows.Forms.Button button_Init;
         private System.Windows.Forms.ListBox listBox_NdO;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -316,7 +341,7 @@
         private System.Windows.Forms.Label labellistbox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox listBox_NdF;
-        private System.Windows.Forms.Button buttonValid;
+        private System.Windows.Forms.Button btnEnvoyer;
         private System.Windows.Forms.Label labeltxtNdF;
         private System.Windows.Forms.Label labeltxtNdO;
         private System.Windows.Forms.Label labelNdInit;
@@ -329,6 +354,8 @@
         private System.Windows.Forms.Button buttonTerminer;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnValiderNd;
+        private System.Windows.Forms.Button btnValiderTree;
         private System.Windows.Forms.TreeView treeView2;
     }
 }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace QCM.Partie_II
 {
@@ -28,7 +28,7 @@ namespace QCM.Partie_II
             InitializeComponent();
         }
 
-        private void button_txt_Click_1(object sender, EventArgs e)
+        private void button_Init_Click(object sender, EventArgs e)
         {
             Random r = new Random();
             int num = r.Next(1, 3);
@@ -68,7 +68,7 @@ namespace QCM.Partie_II
             ligne = monStreamReader.ReadLine();
             i = 0;
             while (ligne[i] != ':') i++;
-            string img = "../../";
+            img = "../../";
             i++; // On dépasse le ":"
             while (ligne[i] == ' ') i++; // on saute les blancs éventuels
             while (i < ligne.Length)
@@ -126,7 +126,7 @@ namespace QCM.Partie_II
             // Fermeture du StreamReader (obligatoire) 
             monStreamReader.Close();
 
-            //pictureBox1.Size = Image.FromFile(img).Size;
+            //Affochage image
             pictureBox1.Image = Image.FromFile(img);
 
             for (int m = 1; m < nbnodes + 1; m++)
@@ -145,8 +145,7 @@ namespace QCM.Partie_II
             listBox_NdF.Items.Add(" ");
 
 
-
-            // AFFICHAGE DE L'ARBRE VIDE
+            // Affichage arbre vide
             numinitial = Convert.ToInt32(labelNdInit.Text);
             numfinal = Convert.ToInt32(labelNdFinal.Text);
             SearchTree g = new SearchTree();
@@ -155,68 +154,16 @@ namespace QCM.Partie_II
             solution = g.RechercheSolutionAEtoile(N0);
 
             g.GetSearchTreeVoid(treeView1);
+            // Affichage arbre rempli caché 
             g.GetSearchTree(treeView2);
         }
 
-
-        private void buttonTerminer_Click(object sender, EventArgs e)
-        {
-
-            // PHASE DE CORRECTION
-            bool validExo = true;
-            SearchTree t = new SearchTree();
-
-
-            if (listBox_NdO.Items.Count == t.L_Etats.Length)
-            {
-                //Véfification Noeud Ouvert 
-                for (int i = 0; i < listBox_NdO.Items.Count; i++)
-                {
-                    if (t_JoueurNd[i, 0] == ";")
-                    { }
-                    else
-                    {
-                        if (t_JoueurNd[i, 0] != t.L_Etats[i, 0].ToString())
-                        {
-                            validExo = false;
-                        }
-
-                    }
-                }
-                //Véfification Noeud Fermé 
-                for (int i = 0; i < listBox_NdF.Items.Count; i++)
-                {
-                    if (t_JoueurNd[i, 1] == ";")
-                    { }
-                    else
-                    {
-                        if (t_JoueurNd[i, 1] != t.L_Etats[i, 1].ToString())
-                        {
-                            validExo = false;
-                        }
-                    }
-                }
-            }
-            else
-                validExo = false;
-
-            //Vérification Arbre 
-            int j = 0; 
-            while(j < treeView1.Nodes.Count || validExo==true)
-            {
-                if (treeView1.Nodes[j] != treeView2.Nodes[j])
-                {
-                    validExo = false;
-                }
-            }
-        }
-        
-        private void buttonValid_Click(object sender, EventArgs e)
+        private void btnEnvoyer_Click(object sender, EventArgs e)
         {
 
             // On transfère les items sélectionnés à la liste
             string sNdO = "";
-            for (int m=0; m < checkedListBox_NdO.CheckedItems.Count; m++)
+            for (int m = 0; m < checkedListBox_NdO.CheckedItems.Count; m++)
             {
                 sNdO = sNdO + checkedListBox_NdO.CheckedItems[m] + "; ";
             }
@@ -245,8 +192,92 @@ namespace QCM.Partie_II
 
             for (int i = 0; i < listBox_NdF.Items.Count; i++)
             {
-                t_JoueurNd[i,1] = listBox_NdF.Items[i].ToString();
+                t_JoueurNd[i, 1] = listBox_NdF.Items[i].ToString();
             }
         }
-    }
+
+        bool CompareRecursiveTree(TreeNode tn1, TreeNode tn2, bool validExoTree)
+        {
+            if (tn1.Text != tn2.Text)
+            {
+                tn1.ForeColor = Color.Red;
+                tn2.ForeColor = Color.Red;
+                validExoTree = false;
+            }
+            int compare = Math.Min(tn1.Nodes.Count, tn2.Nodes.Count);
+            // ignore extra nodes
+            for (int i = 0; i < compare; i++)
+            {
+                validExoTree = CompareRecursiveTree(tn1.Nodes[i], tn2.Nodes[i], validExoTree );
+            }
+            return validExoTree; 
+        }
+
+        bool CompareTreeNodes(TreeView tv1, TreeView tv2, bool validExoTree )
+        {
+            int compare = Math.Min(tv1.Nodes.Count, tv2.Nodes.Count);
+            // ignore extra nodes
+            for (int i = 0; i < compare; i++)
+            {
+                validExoTree = CompareRecursiveTree(tv1.Nodes[i], tv2.Nodes[i], validExoTree);
+            }
+            return validExoTree;
+        }
+
+        private void btnValiderNd_Click(object sender, EventArgs e)
+        {
+            //Correction noeud
+            bool validExoNd = true;
+            SearchTree t = new SearchTree();
+
+            if (listBox_NdO.Items.Count == t.L_Etats.Length)
+            {
+                 //Véfification Noeud Ouvert 
+                 for (int i = 0; i < listBox_NdO.Items.Count; i++)
+                 {
+                     if (t_JoueurNd[i, 0] == ";")
+                     { }
+                     else
+                     {
+                         if (t_JoueurNd[i, 0] != t.L_Etats[i, 0].ToString())
+                         {
+                             validExoNd = false;
+                         }
+
+                     }
+                 }
+
+                 //Véfification Noeud Fermé 
+                 for (int i = 0; i < listBox_NdF.Items.Count; i++)
+                 {
+                     if (t_JoueurNd[i, 1] == ";")
+                     { }
+                     else
+                     {
+                         if (t_JoueurNd[i, 1] != t.L_Etats[i, 1].ToString())
+                         {
+                             validExoNd = false;
+                         }
+                     }
+                 }
+
+            }
+             else
+                 validExoNd = false;
+        }
+
+        private void btnValiderTree_Click(object sender, EventArgs e)
+        {
+            //Correction Arbre 
+            bool validExoTree = true;
+            validExoTree = CompareTreeNodes(this.treeView1, this.treeView2, validExoTree);
+        }
+
+        private void buttonTerminer_Click(object sender, EventArgs e)
+        {
+            Form dijCorrect = new DijkstraCorrect(img, numinitial, numfinal, treeView2); 
+            dijCorrect.ShowDialog();
+            
+        }
+   }
 }
