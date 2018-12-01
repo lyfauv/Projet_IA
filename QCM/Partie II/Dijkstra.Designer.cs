@@ -251,6 +251,7 @@
             // 
             // buttonTerminer
             // 
+            this.buttonTerminer.Enabled = false;
             this.buttonTerminer.Location = new System.Drawing.Point(280, 600);
             this.buttonTerminer.Name = "buttonTerminer";
             this.buttonTerminer.Size = new System.Drawing.Size(98, 31);
