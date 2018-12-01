@@ -20,8 +20,7 @@ namespace QCM.Partie_II
         static public int numfinal;
         static public string[,] t_JoueurNd, t_OrdinateurNd;
         List<GenericNode> solution;
-
-
+        SearchTree g = new SearchTree();
 
         public Dijkstra()
         {
@@ -58,6 +57,7 @@ namespace QCM.Partie_II
 
             // Affichage aléatoire du noeud initial à explorer
             labelNdInit.Text = (r.Next(1, nbnodes + 1).ToString());
+
             // Affichage aléatoire du noeud final
             do
             {
@@ -126,7 +126,7 @@ namespace QCM.Partie_II
             // Fermeture du StreamReader (obligatoire) 
             monStreamReader.Close();
 
-            //Affochage image
+            //Affichage image
             pictureBox1.Image = Image.FromFile(img);
 
             for (int m = 1; m < nbnodes + 1; m++)
@@ -140,6 +140,7 @@ namespace QCM.Partie_II
             }
 
             listBox_NdO.Items.Clear();
+
             // Affichage du premier noeud à explorer
             listBox_NdO.Items.Add(labelNdInit.Text + "; ");
             listBox_NdF.Items.Add(" ");
@@ -148,7 +149,6 @@ namespace QCM.Partie_II
             // Affichage arbre vide
             numinitial = Convert.ToInt32(labelNdInit.Text);
             numfinal = Convert.ToInt32(labelNdFinal.Text);
-            SearchTree g = new SearchTree();
             Node2 N0 = new Node2();
             N0.numero = numinitial;
             solution = g.RechercheSolutionAEtoile(N0);
@@ -156,6 +156,7 @@ namespace QCM.Partie_II
             g.GetSearchTreeVoid(treeView1);
             // Affichage arbre rempli caché 
             g.GetSearchTree(treeView2);
+
         }
 
         private void btnEnvoyer_Click(object sender, EventArgs e)
@@ -228,9 +229,8 @@ namespace QCM.Partie_II
         {
             //Correction noeud
             bool validExoNd = true;
-            SearchTree t = new SearchTree();
 
-            if (listBox_NdO.Items.Count == t.L_Etats.Length)
+            if (listBox_NdO.Items.Count == g.L_Etats.Length)
             {
                  //Véfification Noeud Ouvert 
                  for (int i = 0; i < listBox_NdO.Items.Count; i++)
@@ -239,7 +239,7 @@ namespace QCM.Partie_II
                      { }
                      else
                      {
-                         if (t_JoueurNd[i, 0] != t.L_Etats[i, 0].ToString())
+                         if (t_JoueurNd[i, 0] != g.L_Etats[i, 0].ToString())
                          {
                              validExoNd = false;
                          }
@@ -254,7 +254,7 @@ namespace QCM.Partie_II
                      { }
                      else
                      {
-                         if (t_JoueurNd[i, 1] != t.L_Etats[i, 1].ToString())
+                         if (t_JoueurNd[i, 1] != g.L_Etats[i, 1].ToString())
                          {
                              validExoNd = false;
                          }
@@ -264,6 +264,8 @@ namespace QCM.Partie_II
             }
              else
                  validExoNd = false;
+
+            bool b = validExoNd;
         }
 
         private void btnValiderTree_Click(object sender, EventArgs e)
@@ -275,7 +277,7 @@ namespace QCM.Partie_II
 
         private void buttonTerminer_Click(object sender, EventArgs e)
         {
-            Form dijCorrect = new DijkstraCorrect(img, numinitial, numfinal, treeView2); 
+            Form dijCorrect = new DijkstraCorrect(img, numinitial, numfinal); 
             dijCorrect.ShowDialog();
             
         }

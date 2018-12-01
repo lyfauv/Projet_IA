@@ -50,10 +50,10 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnValiderTree = new System.Windows.Forms.Button();
+            this.treeView2 = new System.Windows.Forms.TreeView();
             this.buttonTerminer = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.treeView2 = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -263,6 +263,16 @@
             this.btnValiderTree.UseVisualStyleBackColor = true;
             this.btnValiderTree.Click += new System.EventHandler(this.btnValiderTree_Click);
             // 
+            // treeView2
+            // 
+            this.treeView2.FullRowSelect = true;
+            this.treeView2.LabelEdit = true;
+            this.treeView2.Location = new System.Drawing.Point(11, 19);
+            this.treeView2.Name = "treeView2";
+            this.treeView2.Size = new System.Drawing.Size(145, 173);
+            this.treeView2.TabIndex = 9;
+            this.treeView2.Visible = false;
+            // 
             // buttonTerminer
             // 
             this.buttonTerminer.Location = new System.Drawing.Point(280, 600);
@@ -291,16 +301,6 @@
             this.label5.Size = new System.Drawing.Size(629, 26);
             this.label5.TabIndex = 55;
             this.label5.Text = resources.GetString("label5.Text");
-            // 
-            // treeView2
-            // 
-            this.treeView2.FullRowSelect = true;
-            this.treeView2.LabelEdit = true;
-            this.treeView2.Location = new System.Drawing.Point(11, 19);
-            this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(145, 173);
-            this.treeView2.TabIndex = 9;
-            this.treeView2.Visible = false;
             // 
             // Dijkstra
             // 

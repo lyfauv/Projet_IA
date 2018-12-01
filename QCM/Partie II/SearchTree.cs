@@ -65,6 +65,11 @@ namespace QCM.Partie_II
             // tant que le noeud n'est pas terminal et que ouverts n'est pas vide
             while (L_Ouverts.Count != 0 && N.EndState() == false)
             {
+                // Etat de la solution
+                L_Etats[nbEtats, 0] = L_Ouverts;
+                L_Etats[nbEtats, 1] = L_Fermes;
+                nbEtats++;
+
                 // Le meilleur noeud des ouverts est supposé placé en tête de liste
                 // On le place dans les fermés
                 L_Ouverts.Remove(N);
@@ -84,11 +89,6 @@ namespace QCM.Partie_II
                 {
                     N = null;
                 }
-
-                // Etat de la solution
-                L_Etats[nbEtats, 0] = L_Ouverts;
-                L_Etats[nbEtats, 1] = L_Fermes;
-                nbEtats++;
             }
 
             // A* terminé
@@ -239,6 +239,18 @@ namespace QCM.Partie_II
                 TN.Nodes.Add(TNfils);
                 if (GNfils.GetEnfants().Count > 0) AjouteBrancheVoid(GNfils, TNfils);
             }
+        }
+        public string AfficheListeNoeuds(List<GenericNode> L)
+        {
+            string liste = "";
+
+            // Construction
+            foreach (GenericNode node in L.OrderBy(n => ((Node2)n).numero))
+            {
+                liste += ((Node2)node).numero + "; ";
+            }
+
+            return liste;
         }
     }
 }

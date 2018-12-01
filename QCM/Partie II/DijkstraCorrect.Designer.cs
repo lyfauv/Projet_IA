@@ -48,7 +48,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(201, 21);
+            this.label3.Location = new System.Drawing.Point(211, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(211, 29);
             this.label3.TabIndex = 55;
@@ -57,7 +57,6 @@
             // treeView
             // 
             this.treeView.FullRowSelect = true;
-            this.treeView.LabelEdit = true;
             this.treeView.Location = new System.Drawing.Point(391, 363);
             this.treeView.Name = "treeView";
             this.treeView.Size = new System.Drawing.Size(147, 147);
@@ -182,7 +181,6 @@
             this.Controls.Add(this.label3);
             this.Name = "DijkstraCorrect";
             this.Text = "DijkstraCorrect";
-            this.Load += new System.EventHandler(this.DijkstraCorrect_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
