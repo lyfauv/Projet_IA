@@ -46,10 +46,8 @@
             this.checkedListBox_NdO = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox_NdF = new System.Windows.Forms.CheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnValiderNd = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnValiderTree = new System.Windows.Forms.Button();
             this.treeView2 = new System.Windows.Forms.TreeView();
             this.buttonTerminer = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -206,7 +204,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnValiderNd);
             this.groupBox1.Controls.Add(this.checkedListBox_NdO);
             this.groupBox1.Controls.Add(this.checkedListBox_NdF);
             this.groupBox1.Controls.Add(this.btnEnvoyer);
@@ -223,27 +220,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Algorithme Dijtstra";
             // 
-            // btnValiderNd
-            // 
-            this.btnValiderNd.Location = new System.Drawing.Point(288, 203);
-            this.btnValiderNd.Name = "btnValiderNd";
-            this.btnValiderNd.Size = new System.Drawing.Size(98, 31);
-            this.btnValiderNd.TabIndex = 52;
-            this.btnValiderNd.Text = "Valider";
-            this.btnValiderNd.UseVisualStyleBackColor = true;
-            this.btnValiderNd.Click += new System.EventHandler(this.btnValiderNd_Click);
-            // 
             // treeView1
             // 
             this.treeView1.LabelEdit = true;
             this.treeView1.Location = new System.Drawing.Point(11, 19);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(145, 173);
+            this.treeView1.Size = new System.Drawing.Size(145, 215);
             this.treeView1.TabIndex = 8;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnValiderTree);
             this.groupBox2.Controls.Add(this.treeView1);
             this.groupBox2.Controls.Add(this.treeView2);
             this.groupBox2.Location = new System.Drawing.Point(473, 345);
@@ -252,16 +238,6 @@
             this.groupBox2.TabIndex = 53;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Arbre";
-            // 
-            // btnValiderTree
-            // 
-            this.btnValiderTree.Location = new System.Drawing.Point(31, 203);
-            this.btnValiderTree.Name = "btnValiderTree";
-            this.btnValiderTree.Size = new System.Drawing.Size(98, 31);
-            this.btnValiderTree.TabIndex = 53;
-            this.btnValiderTree.Text = "Valider";
-            this.btnValiderTree.UseVisualStyleBackColor = true;
-            this.btnValiderTree.Click += new System.EventHandler(this.btnValiderTree_Click);
             // 
             // treeView2
             // 
@@ -354,8 +330,6 @@
         private System.Windows.Forms.Button buttonTerminer;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnValiderNd;
-        private System.Windows.Forms.Button btnValiderTree;
         private System.Windows.Forms.TreeView treeView2;
     }
 }

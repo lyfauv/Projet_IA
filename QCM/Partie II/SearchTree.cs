@@ -10,6 +10,7 @@ namespace QCM.Partie_II
     {
         public List<GenericNode> L_Ouverts;
         public List<GenericNode> L_Fermes;
+        public List<GenericNode> L_EtatsO;
         public List<GenericNode>[,] L_Etats;
         public int nbEtats;
 
@@ -57,18 +58,14 @@ namespace QCM.Partie_II
             L_Ouverts.Add(N0);
 
             // Etat initial de la solution
-            L_Etats = new List<GenericNode>[10, 2];
-            L_Etats[nbEtats, 0] = L_Ouverts;
-            L_Etats[nbEtats, 1] = L_Fermes;
+            L_Etats = new List<GenericNode>[10,2];
+            L_Etats[nbEtats, 0] = new List<GenericNode>(L_Ouverts);
+            L_Etats[nbEtats, 1] = new List<GenericNode>(L_Fermes);
             nbEtats++;
 
             // tant que le noeud n'est pas terminal et que ouverts n'est pas vide
             while (L_Ouverts.Count != 0 && N.EndState() == false)
             {
-                // Etat de la solution
-                L_Etats[nbEtats, 0] = L_Ouverts;
-                L_Etats[nbEtats, 1] = L_Fermes;
-                nbEtats++;
 
                 // Le meilleur noeud des ouverts est supposé placé en tête de liste
                 // On le place dans les fermés
@@ -89,6 +86,11 @@ namespace QCM.Partie_II
                 {
                     N = null;
                 }
+
+                // Etat de la solution
+                L_Etats[nbEtats,0] = new List <GenericNode>(L_Ouverts);
+                L_Etats[nbEtats, 1] = new List<GenericNode>(L_Fermes);
+                nbEtats++;
             }
 
             // A* terminé

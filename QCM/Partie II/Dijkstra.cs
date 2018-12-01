@@ -225,58 +225,52 @@ namespace QCM.Partie_II
             return validExoTree;
         }
 
-        private void btnValiderNd_Click(object sender, EventArgs e)
+        private void buttonTerminer_Click(object sender, EventArgs e)
         {
+            // PARTIE 1
             //Correction noeud
             bool validExoNd = true;
 
             if (listBox_NdO.Items.Count == g.L_Etats.Length)
             {
-                 //Véfification Noeud Ouvert 
-                 for (int i = 0; i < listBox_NdO.Items.Count; i++)
-                 {
-                     if (t_JoueurNd[i, 0] == ";")
-                     { }
-                     else
-                     {
-                         if (t_JoueurNd[i, 0] != g.L_Etats[i, 0].ToString())
-                         {
-                             validExoNd = false;
-                         }
+                //Véfification Noeud Ouvert 
+                for (int i = 0; i < listBox_NdO.Items.Count; i++)
+                {
+                    if (t_JoueurNd[i, 0] == ";")
+                    { }
+                    else
+                    {
+                        if (t_JoueurNd[i, 0] != g.L_Etats[i, 0].ToString())
+                        {
+                            validExoNd = false;
+                        }
 
-                     }
-                 }
+                    }
+                }
 
-                 //Véfification Noeud Fermé 
-                 for (int i = 0; i < listBox_NdF.Items.Count; i++)
-                 {
-                     if (t_JoueurNd[i, 1] == ";")
-                     { }
-                     else
-                     {
-                         if (t_JoueurNd[i, 1] != g.L_Etats[i, 1].ToString())
-                         {
-                             validExoNd = false;
-                         }
-                     }
-                 }
+                //Véfification Noeud Fermé 
+                for (int i = 0; i < listBox_NdF.Items.Count; i++)
+                {
+                    if (t_JoueurNd[i, 1] == ";")
+                    { }
+                    else
+                    {
+                        if (t_JoueurNd[i, 1] != g.L_Etats[i, 1].ToString())
+                        {
+                            validExoNd = false;
+                        }
+                    }
+                }
 
             }
-             else
-                 validExoNd = false;
+            else
+                validExoNd = false;
 
-            bool b = validExoNd;
-        }
-
-        private void btnValiderTree_Click(object sender, EventArgs e)
-        {
+            // PARTIE 2
             //Correction Arbre 
             bool validExoTree = true;
             validExoTree = CompareTreeNodes(this.treeView1, this.treeView2, validExoTree);
-        }
 
-        private void buttonTerminer_Click(object sender, EventArgs e)
-        {
             Form dijCorrect = new DijkstraCorrect(img, numinitial, numfinal); 
             dijCorrect.ShowDialog();
             
