@@ -17,6 +17,8 @@ namespace QCM.Partie_II
             InitializeComponent();
 
             //Affichage image
+            if (img == null)
+            { }
             pictureBox1.Image = Image.FromFile(img);
 
             //Affichage noeud initial et final

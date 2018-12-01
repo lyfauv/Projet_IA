@@ -31,7 +31,10 @@ namespace QCM.Partie_II
 
         private void button_Init_Click(object sender, EventArgs e)
         {
+            // Contrôle du bouton <Init>
+            buttonTerminer.Enabled = true;
             Random r = new Random();
+            // Choix aléatoire d'un des deux graphes
             int num = r.Next(1, 3);
             string txt = "../../graphe" + num + ".txt";
 
@@ -57,16 +60,38 @@ namespace QCM.Partie_II
                 for (int j = 0; j <= nbnodes; j++)
                     matrice[k, j] = -1;
 
-            // Affichage aléatoire du noeud initial à explorer
-            labelNdInit.Text = (r.Next(1, nbnodes + 1).ToString());
-
-            // Affichage aléatoire du noeud final
-            do
+            // Init noeud initial et final 
+            //Noeud initial
+            ligne = monStreamReader.ReadLine();
+            i = 0;
+            while (ligne[i] != ':') i++;
+            string strNdInit = "";
+            i++; // On dépasse le ":"
+            while (ligne[i] == ' ') i++; // on saute les blancs éventuels
+            while (i < ligne.Length)
             {
-                labelNdFinal.Text = (r.Next(1, nbnodes + 1).ToString());
-            } while (labelNdFinal.Text == labelNdInit.Text);
+                strNdInit = strNdInit + ligne[i];
+                i++;
+            }
+            numinitial = Convert.ToInt32(strNdInit);
+            labelNdInit.Text = numinitial.ToString();
 
-            // 2ème ligne : image associée
+            //Noeud final
+            ligne = monStreamReader.ReadLine();
+            i = 0;
+            while (ligne[i] != ':') i++;
+            string strNdFinal = "";
+            i++; // On dépasse le ":"
+            while (ligne[i] == ' ') i++; // on saute les blancs éventuels
+            while (i < ligne.Length)
+            {
+                strNdFinal = strNdFinal + ligne[i];
+                i++;
+            }
+            numfinal = Convert.ToInt32(strNdFinal);
+            labelNdFinal.Text = numfinal.ToString();
+
+            //image associée
             ligne = monStreamReader.ReadLine();
             i = 0;
             while (ligne[i] != ':') i++;
@@ -154,7 +179,6 @@ namespace QCM.Partie_II
             Node2 N0 = new Node2();
             N0.numero = numinitial;
             solution = g.RechercheSolutionAEtoile(N0);
-
             g.GetSearchTreeVoid(treeView1);
             // Affichage arbre rempli caché 
             g.GetSearchTree(treeView2);
