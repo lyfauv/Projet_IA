@@ -21,6 +21,7 @@ namespace QCM
         int numQuestionDonne;
         int reponse;
         List<int> questionPassees;
+        bool reponseJuste = false;
 
         /// <summary>
         /// Initialisation du questionnaire
@@ -183,25 +184,32 @@ namespace QCM
 
                     }
                 }
-
-                // On ajoute le numéro de la question obtenue à la liste des questions déjà données
-                questionPassees.Add(numQuestionDonne);
-
-                Question.Text = lecteur.retournerQuestion(numQuestionDonne, fichier);
-
-                if (lecteur.ImageExiste(numQuestionDonne, fichier))
+                if (numQuestion == 20) // Question Dijkstra
                 {
-                    Image.Visible = true;
-                    Image.ImageLocation = lecteur.retournerImage(numQuestionDonne, fichier);
+                    
+                    Form formulaire = new Dijkstra();
+                    formulaire.ShowDialog();
+                    if (formulaire.ShowDialog() == DialogResult.OK)
+                    {
+                        //reponseJuste = formulaire.validExoTree;
+                    }
                 }
+                else
+                {
+                    // On ajoute le numéro de la question obtenue à la liste des questions déjà données
+                    questionPassees.Add(numQuestionDonne);
 
-                // Affichage des réponses de la question suivante
-                AfficheReponses(numQuestionDonne);
-            }
-            else if(numQuestion == 20) // Question Dijkstra
-            {
-                Form formulaire = new Dijkstra();
-                formulaire.ShowDialog();
+                    Question.Text = lecteur.retournerQuestion(numQuestionDonne, fichier);
+
+                    if (lecteur.ImageExiste(numQuestionDonne, fichier))
+                    {
+                        Image.Visible = true;
+                        Image.ImageLocation = lecteur.retournerImage(numQuestionDonne, fichier);
+                    }
+
+                    // Affichage des réponses de la question suivante
+                    AfficheReponses(numQuestionDonne);
+                }
             }
             else
             {

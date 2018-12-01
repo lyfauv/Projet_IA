@@ -21,10 +21,12 @@ namespace QCM.Partie_II
         static public string[,] t_JoueurNd, t_OrdinateurNd;
         List<GenericNode> solution;
         SearchTree g = new SearchTree();
+        bool validExoTree { get; set; }
 
-        public Dijkstra()
+        public Dijkstra(bool juste)
         {
             InitializeComponent();
+            validExoTree = juste;
         }
 
         private void button_Init_Click(object sender, EventArgs e)
@@ -273,6 +275,7 @@ namespace QCM.Partie_II
 
             Form dijCorrect = new DijkstraCorrect(img, numinitial, numfinal); 
             dijCorrect.ShowDialog();
+            Close();
             
         }
    }
