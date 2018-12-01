@@ -21,7 +21,7 @@ namespace QCM
         int numQuestionDonne;
         int reponse;
         List<int> questionPassees;
-        bool reponseJuste = false;
+        static bool reponseJuste = false;
 
         /// <summary>
         /// Initialisation du questionnaire
@@ -135,7 +135,7 @@ namespace QCM
 
             numQuestion++;
 
-            if (numQuestion <= 19) // On ne va pas jusqu'à 20 pour laisser une question concernant Dijkstra
+            if (numQuestion <= 20)
             {
                 // On regarde si la réponse cochée est la bonne
                 if (Rep1.Checked || Rep2.Checked || Rep3.Checked || Rep4.Checked)
@@ -187,12 +187,42 @@ namespace QCM
                 if (numQuestion == 20) // Question Dijkstra
                 {
                     
-                    Form formulaire = new Dijkstra();
+                    Dijkstra formulaire = new Dijkstra(reponseJuste);
                     formulaire.ShowDialog();
-                    if (formulaire.ShowDialog() == DialogResult.OK)
+                    reponseJuste = formulaire.validExoTree;
+
+                    if (reponseJuste)
+                        score += 3;
+
+                    // On cache tous ce qui est en rapport avec les questions et on fait apparaître le label de fin du QCM
+                    Fin.Visible = true;
+                    Valider.Visible = false;
+                    NumQuestion.Visible = false;
+                    Question.Visible = false;
+                    Rep1.Visible = false;
+                    Rep2.Visible = false;
+                    Rep3.Visible = false;
+                    Rep4.Visible = false;
+                    Image.Visible = false;
+
+                    string reussite = "mince";
+
+                    // On cherche le score total des questions
+                    int scoreTotal = 0;
+                    foreach (int element in questionPassees)
                     {
-                        //reponseJuste = formulaire.validExoTree;
+                        scoreTotal += lecteur.retournerScore(element, fichier);
                     }
+
+                    scoreTotal += 3; // Correspond au score de la question Dijkstra
+
+                    if (((score * 20) / scoreTotal) >= 10)
+                        reussite = "Vous avez réussi votre examen ! :-)";
+                    else
+                        reussite = "Il vous manque encore quelques connaissances sur le sujet :s";
+
+                    // On convertit la note sur 20 et on affiche la note obtenue
+                    Fin.Text = "Vous avez terminé ! Vous avez obtenu une note de " + ((score * 20) / scoreTotal) + " / 20 ! \n" + reussite;
                 }
                 else
                 {
@@ -213,35 +243,7 @@ namespace QCM
             }
             else
             {
-                // On cache tous ce qui est en rapport avec les questions et on fait apparaître le label de fin du QCM
-                Fin.Visible = true;
-                Valider.Visible = false;
-                NumQuestion.Visible = false;
-                Question.Visible = false;
-                Rep1.Visible = false;
-                Rep2.Visible = false;
-                Rep3.Visible = false;
-                Rep4.Visible = false;
-                Image.Visible = false;
-
-                string reussite = "mince";
-
-                // On cherche le score total des questions
-                int scoreTotal = 0;
-                foreach(int element in questionPassees)
-                {
-                    scoreTotal += lecteur.retournerScore(element, fichier);
-                }
-
-                scoreTotal += 3; // Correspond au score de la question Dijkstra
-
-                if (((score * 20) / scoreTotal) >= 10)
-                    reussite = "Vous avez réussi votre examen ! :-)";
-                else
-                    reussite = "Il vous manque encore quelques connaissances sur le sujet :s";
-
-                // On convertit la note sur 20 et on affiche la note obtenue
-                Fin.Text = "Vous avez terminé ! Vous avez obtenu une note de " + ((score * 20) / scoreTotal) + " / 20 ! \n" + reussite;
+                
             }
         }
     }

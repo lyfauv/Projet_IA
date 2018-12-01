@@ -21,7 +21,7 @@ namespace QCM.Partie_II
         static public string[,] t_JoueurNd, t_OrdinateurNd;
         List<GenericNode> solution;
         SearchTree g = new SearchTree();
-        bool validExoTree { get; set; }
+        internal bool validExoTree { get; set; }
 
         public Dijkstra(bool juste)
         {
@@ -294,7 +294,7 @@ namespace QCM.Partie_II
 
             // PARTIE 2
             //Correction Arbre 
-            bool validExoTree = true;
+            validExoTree = true;
             validExoTree = CompareTreeNodes(this.treeView1, this.treeView2, validExoTree);
 
             Form dijCorrect = new DijkstraCorrect(img, numinitial, numfinal); 
