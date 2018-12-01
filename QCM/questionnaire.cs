@@ -21,7 +21,8 @@ namespace QCM
         int numQuestionDonne;
         int reponse;
         List<int> questionPassees;
-        static bool reponseJuste = false;
+        static bool arbreJuste = false;
+        static bool noeudJuste = false;
 
         /// <summary>
         /// Initialisation du questionnaire
@@ -187,12 +188,16 @@ namespace QCM
                 if (numQuestion == 20) // Question Dijkstra
                 {
                     
-                    Dijkstra formulaire = new Dijkstra(reponseJuste);
+                    Dijkstra formulaire = new Dijkstra();
                     formulaire.ShowDialog();
-                    reponseJuste = formulaire.validExoTree;
+                    arbreJuste = formulaire.validExoTree;
+                    noeudJuste = formulaire.validExoNd;
 
-                    if (reponseJuste)
-                        score += 3;
+                    if (arbreJuste)
+                        score += 1;
+
+                    if (noeudJuste)
+                        score += 2;
 
                     // On cache tous ce qui est en rapport avec les questions et on fait apparaître le label de fin du QCM
                     Fin.Visible = true;

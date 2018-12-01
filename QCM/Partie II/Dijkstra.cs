@@ -22,11 +22,11 @@ namespace QCM.Partie_II
         List<GenericNode> solution;
         SearchTree g = new SearchTree();
         internal bool validExoTree { get; set; }
+        internal bool validExoNd { get; set; }
 
-        public Dijkstra(bool juste)
+        public Dijkstra()
         {
             InitializeComponent();
-            validExoTree = juste;
         }
 
         private void button_Init_Click(object sender, EventArgs e)
